@@ -1,0 +1,550 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		011E72F2FE8824BA10D67BC3C184013E /* Pods-BarBetsChat-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AD093C3D00891A6FDCEC9AD79D8F003 /* Pods-BarBetsChat-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		63F8EBB3CF697FF4F185E9ED7F747FF6 /* Pods-BarBetsChat-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF2C61F0B61405011D94D23B7EF2455 /* Pods-BarBetsChat-dummy.m */; };
+		645D605CD14A7E5E9A82F0C6F9436627 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0690B02DA41066CE1F1798BCF565E222 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
+		1815D2A3010404CD543E84C5268BCABC /* FirebaseDatabase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseDatabase.framework; path = Frameworks/FirebaseDatabase.framework; sourceTree = "<group>"; };
+		19BCF32C925923EFF5C214170C9B6C66 /* Pods_BarBetsChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BarBetsChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E0D3A932CDE9FC1D3312AC676AD6F8C /* Pods-BarBetsChat-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BarBetsChat-resources.sh"; sourceTree = "<group>"; };
+		28E068939D9EE20C8EF10B07D3E31F4C /* GoogleNetworkingUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleNetworkingUtilities.framework; path = Frameworks/GoogleNetworkingUtilities.framework; sourceTree = "<group>"; };
+		4ECCE3402153259021AF24C923F9DB31 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Frameworks/GoogleUtilities.framework; sourceTree = "<group>"; };
+		50DF8C579ADEBA04C087AF17A2FCEFD7 /* Pods-BarBetsChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BarBetsChat.release.xcconfig"; sourceTree = "<group>"; };
+		57E91500719F61D3165E3FF6E368D2E9 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
+		59FD16E64EFD1DC43441683D2AB3DB46 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63DDFEFC1970DD137BD9F7846F09ECAB /* GoogleParsingUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleParsingUtilities.framework; path = Frameworks/GoogleParsingUtilities.framework; sourceTree = "<group>"; };
+		6B9AAC50415942DA4B52EEBE7E2823C6 /* Pods-BarBetsChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BarBetsChat.debug.xcconfig"; sourceTree = "<group>"; };
+		85745E7D437459B31A5864C3F32C9317 /* FirebaseStorage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseStorage.framework; path = Frameworks/FirebaseStorage.framework; sourceTree = "<group>"; };
+		8AD093C3D00891A6FDCEC9AD79D8F003 /* Pods-BarBetsChat-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-BarBetsChat-umbrella.h"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		945E26B86795575A7E8A0EB616A8493A /* Pods-BarBetsChat-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BarBetsChat-acknowledgements.plist"; sourceTree = "<group>"; };
+		A099185732880F03733313ADFA45EB64 /* FIRInstanceID.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceID.h; path = Headers/Public/FIRInstanceID.h; sourceTree = "<group>"; };
+		A50FF136ADBB2998767B9A2CC99C8585 /* Pods-BarBetsChat-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BarBetsChat-acknowledgements.markdown"; sourceTree = "<group>"; };
+		AADD2F12C1FAD840D8463ABD9313FD6F /* Firebase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Firebase.h; path = Headers/Firebase.h; sourceTree = "<group>"; };
+		ADF2C61F0B61405011D94D23B7EF2455 /* Pods-BarBetsChat-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BarBetsChat-dummy.m"; sourceTree = "<group>"; };
+		B07914CE61B45E2BCCE466D2E4FCE05F /* GoogleInterchangeUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleInterchangeUtilities.framework; path = Frameworks/GoogleInterchangeUtilities.framework; sourceTree = "<group>"; };
+		B4681D183129176945E0774B09EC4ECC /* FirebaseAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAuth.framework; path = Frameworks/frameworks/FirebaseAuth.framework; sourceTree = "<group>"; };
+		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		EB85E30C680D4FBFD5E5BD6A4460AC1D /* Pods-BarBetsChat.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-BarBetsChat.modulemap"; sourceTree = "<group>"; };
+		F49019F577398D68950086920B7B7783 /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSymbolUtilities.framework; path = Frameworks/GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
+		F6D27809052AA9E7D247B5BDE9125B3E /* Pods-BarBetsChat-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BarBetsChat-frameworks.sh"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		57AE6F788314EC62848175A4DC255CDA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				645D605CD14A7E5E9A82F0C6F9436627 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1B438838F99E86C33903E9D64F322884 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				19BCF32C925923EFF5C214170C9B6C66 /* Pods_BarBetsChat.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2C152434E318BDFC6AAA4637635C92CB /* FirebaseAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				34A0684B5AC997FEE0A96FA25B4950BF /* Frameworks */,
+			);
+			path = FirebaseAnalytics;
+			sourceTree = "<group>";
+		};
+		34A0684B5AC997FEE0A96FA25B4950BF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0690B02DA41066CE1F1798BCF565E222 /* FirebaseAnalytics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		4394B74490AA63B69393624F146FC3D1 /* Pods-BarBetsChat */ = {
+			isa = PBXGroup;
+			children = (
+				59FD16E64EFD1DC43441683D2AB3DB46 /* Info.plist */,
+				EB85E30C680D4FBFD5E5BD6A4460AC1D /* Pods-BarBetsChat.modulemap */,
+				A50FF136ADBB2998767B9A2CC99C8585 /* Pods-BarBetsChat-acknowledgements.markdown */,
+				945E26B86795575A7E8A0EB616A8493A /* Pods-BarBetsChat-acknowledgements.plist */,
+				ADF2C61F0B61405011D94D23B7EF2455 /* Pods-BarBetsChat-dummy.m */,
+				F6D27809052AA9E7D247B5BDE9125B3E /* Pods-BarBetsChat-frameworks.sh */,
+				1E0D3A932CDE9FC1D3312AC676AD6F8C /* Pods-BarBetsChat-resources.sh */,
+				8AD093C3D00891A6FDCEC9AD79D8F003 /* Pods-BarBetsChat-umbrella.h */,
+				6B9AAC50415942DA4B52EEBE7E2823C6 /* Pods-BarBetsChat.debug.xcconfig */,
+				50DF8C579ADEBA04C087AF17A2FCEFD7 /* Pods-BarBetsChat.release.xcconfig */,
+			);
+			name = "Pods-BarBetsChat";
+			path = "Target Support Files/Pods-BarBetsChat";
+			sourceTree = "<group>";
+		};
+		453639F77B3EB6B4CF18A5FD54CDAE71 /* GoogleSymbolUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				48FDA7781B212532661B34258760D0BC /* Frameworks */,
+			);
+			path = GoogleSymbolUtilities;
+			sourceTree = "<group>";
+		};
+		48FDA7781B212532661B34258760D0BC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F49019F577398D68950086920B7B7783 /* GoogleSymbolUtilities.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6260985D180B8FEB7FC63E1953C6BB6B /* GoogleUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				C116C31BAE424153AD00D6BFFC07ED1C /* Frameworks */,
+			);
+			path = GoogleUtilities;
+			sourceTree = "<group>";
+		};
+		6580F1087CB9A5ADBF554447B2181AC5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B4681D183129176945E0774B09EC4ECC /* FirebaseAuth.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				D747591A8FEEFD8CD1042642C4C3A35F /* Pods */,
+				1B438838F99E86C33903E9D64F322884 /* Products */,
+				F468C1CD9556516435D09644677F126E /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		863D8178306DF5EA35115F54FE9DB8DC /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				D834C6EF200379E11394034658824740 /* Analytics */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		89C482C500CAC5298583C8F231C91FDB /* GoogleParsingUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				F4165ED857874553CD1CDC90E0ECC575 /* Frameworks */,
+			);
+			path = GoogleParsingUtilities;
+			sourceTree = "<group>";
+		};
+		A294C616288F5AF3B947A787E60310EF /* FirebaseInstanceID */ = {
+			isa = PBXGroup;
+			children = (
+				A099185732880F03733313ADFA45EB64 /* FIRInstanceID.h */,
+				A6E98D106C7587CF744C8756BCFC9142 /* Frameworks */,
+			);
+			path = FirebaseInstanceID;
+			sourceTree = "<group>";
+		};
+		A6AD1E8361F23DD7FC20CF1F5F6193F0 /* GoogleInterchangeUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				BA74169EA2E244B7BF9E5C173AC728CD /* Frameworks */,
+			);
+			path = GoogleInterchangeUtilities;
+			sourceTree = "<group>";
+		};
+		A6E98D106C7587CF744C8756BCFC9142 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				57E91500719F61D3165E3FF6E368D2E9 /* FirebaseInstanceID.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BA74169EA2E244B7BF9E5C173AC728CD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B07914CE61B45E2BCCE466D2E4FCE05F /* GoogleInterchangeUtilities.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BCE09D42006DAF8C572748336E33FF2D /* FirebaseDatabase */ = {
+			isa = PBXGroup;
+			children = (
+				ED95977A669984D9A1D4265992675740 /* Frameworks */,
+			);
+			path = FirebaseDatabase;
+			sourceTree = "<group>";
+		};
+		C116C31BAE424153AD00D6BFFC07ED1C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4ECCE3402153259021AF24C923F9DB31 /* GoogleUtilities.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D019297FC3F595D3EECFADA365A2C945 /* GoogleNetworkingUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				D9872C8C9F7733E75624E2EFACAC9A3B /* Frameworks */,
+			);
+			path = GoogleNetworkingUtilities;
+			sourceTree = "<group>";
+		};
+		D747591A8FEEFD8CD1042642C4C3A35F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				863D8178306DF5EA35115F54FE9DB8DC /* Firebase */,
+				2C152434E318BDFC6AAA4637635C92CB /* FirebaseAnalytics */,
+				E823C0D24FE746E423D1637619881E01 /* FirebaseAuth */,
+				BCE09D42006DAF8C572748336E33FF2D /* FirebaseDatabase */,
+				A294C616288F5AF3B947A787E60310EF /* FirebaseInstanceID */,
+				EA217487184645F1182E6A15A6593A6F /* FirebaseStorage */,
+				A6AD1E8361F23DD7FC20CF1F5F6193F0 /* GoogleInterchangeUtilities */,
+				D019297FC3F595D3EECFADA365A2C945 /* GoogleNetworkingUtilities */,
+				89C482C500CAC5298583C8F231C91FDB /* GoogleParsingUtilities */,
+				453639F77B3EB6B4CF18A5FD54CDAE71 /* GoogleSymbolUtilities */,
+				6260985D180B8FEB7FC63E1953C6BB6B /* GoogleUtilities */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D834C6EF200379E11394034658824740 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				AADD2F12C1FAD840D8463ABD9313FD6F /* Firebase.h */,
+			);
+			name = Analytics;
+			sourceTree = "<group>";
+		};
+		D9872C8C9F7733E75624E2EFACAC9A3B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				28E068939D9EE20C8EF10B07D3E31F4C /* GoogleNetworkingUtilities.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E823C0D24FE746E423D1637619881E01 /* FirebaseAuth */ = {
+			isa = PBXGroup;
+			children = (
+				6580F1087CB9A5ADBF554447B2181AC5 /* Frameworks */,
+			);
+			path = FirebaseAuth;
+			sourceTree = "<group>";
+		};
+		EA217487184645F1182E6A15A6593A6F /* FirebaseStorage */ = {
+			isa = PBXGroup;
+			children = (
+				FBA08AD981711F6DFD38019600C22D7D /* Frameworks */,
+			);
+			path = FirebaseStorage;
+			sourceTree = "<group>";
+		};
+		ED95977A669984D9A1D4265992675740 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1815D2A3010404CD543E84C5268BCABC /* FirebaseDatabase.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F4165ED857874553CD1CDC90E0ECC575 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				63DDFEFC1970DD137BD9F7846F09ECAB /* GoogleParsingUtilities.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F468C1CD9556516435D09644677F126E /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				4394B74490AA63B69393624F146FC3D1 /* Pods-BarBetsChat */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		FBA08AD981711F6DFD38019600C22D7D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				85745E7D437459B31A5864C3F32C9317 /* FirebaseStorage.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		74080A0646A1A51B4C986AE1C41F699D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				011E72F2FE8824BA10D67BC3C184013E /* Pods-BarBetsChat-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		B9C95417FAE36143F1CA338ECB53A5C5 /* Pods-BarBetsChat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C5363819DD62B818224B51921FF97A2B /* Build configuration list for PBXNativeTarget "Pods-BarBetsChat" */;
+			buildPhases = (
+				41524E0ADD5721D64EDDCD74BF4E21F7 /* Sources */,
+				57AE6F788314EC62848175A4DC255CDA /* Frameworks */,
+				74080A0646A1A51B4C986AE1C41F699D /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-BarBetsChat";
+			productName = "Pods-BarBetsChat";
+			productReference = 19BCF32C925923EFF5C214170C9B6C66 /* Pods_BarBetsChat.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 1B438838F99E86C33903E9D64F322884 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B9C95417FAE36143F1CA338ECB53A5C5 /* Pods-BarBetsChat */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		41524E0ADD5721D64EDDCD74BF4E21F7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63F8EBB3CF697FF4F185E9ED7F747FF6 /* Pods-BarBetsChat-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		3FA451D268613890FA8A5A03801E11D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5E62115DE8C09934BF8D2FE5D15FED1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		CD2A8D7C393E0460C4B9596437860248 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B9AAC50415942DA4B52EEBE7E2823C6 /* Pods-BarBetsChat.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-BarBetsChat/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-BarBetsChat/Pods-BarBetsChat.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_BarBetsChat;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		CFE0E73DB6BD64C711F57435D2DE4E95 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 50DF8C579ADEBA04C087AF17A2FCEFD7 /* Pods-BarBetsChat.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-BarBetsChat/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-BarBetsChat/Pods-BarBetsChat.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_BarBetsChat;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E62115DE8C09934BF8D2FE5D15FED1E /* Debug */,
+				3FA451D268613890FA8A5A03801E11D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C5363819DD62B818224B51921FF97A2B /* Build configuration list for PBXNativeTarget "Pods-BarBetsChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD2A8D7C393E0460C4B9596437860248 /* Debug */,
+				CFE0E73DB6BD64C711F57435D2DE4E95 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

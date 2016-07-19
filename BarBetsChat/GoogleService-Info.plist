@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>863728351129-a6o4jp1457fvqnumq6krsan3mkcrcjpj.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.863728351129-a6o4jp1457fvqnumq6krsan3mkcrcjpj</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDAAFaj1sQV9FjMNR_QtZND1KKZmrW1XEw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>863728351129</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>kaylajensencoding.BarBetsChat</string>
+	<key>PROJECT_ID</key>
+	<string>bsbchat-ac1f4</string>
+	<key>STORAGE_BUCKET</key>
+	<string>bsbchat-ac1f4.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:863728351129:ios:7a743f3c21dd317d</string>
+	<key>DATABASE_URL</key>
+	<string>https://bsbchat-ac1f4.firebaseio.com</string>
+</dict>
+</plist>
