@@ -11,6 +11,7 @@ import Firebase
 
 class LoginViewController: UIViewController {
 
+    var messagesController: MessagesViewController?
     let inputsContainerView : UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.whiteColor()
@@ -45,7 +46,7 @@ class LoginViewController: UIViewController {
                 print(error)
                 return
             }
-            
+            self.messagesController?.fetchUserAndSetupNavBarTitle()
             self.dismissViewControllerAnimated(true, completion: nil)
         })
     }
@@ -73,7 +74,7 @@ class LoginViewController: UIViewController {
                 return
             }
             
-            let ref = FIRDatabase.database().referenceFromURL("https://bsbchat-ac1f4.firebaseio.com/")
+            let ref = FIRDatabase.database().reference()
             let usersRef = ref.child("users").child(uid)
             let values = ["name": name, "email": email]
             usersRef.updateChildValues(values, withCompletionBlock: { (err,ref) in
@@ -82,6 +83,9 @@ class LoginViewController: UIViewController {
                     return
                 }
                 
+                self.messagesController?.fetchUserAndSetupNavBarTitle()
+                
+                self.messagesController?.navigationItem.title = values["name"]
                 self.dismissViewControllerAnimated(true, completion: nil)
                 print("saved user successfully into Firebase DB")
             })

@@ -34,7 +34,7 @@ class NewMessageController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellId, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellId, forIndexPath: indexPath) as! UserCell
         let user = users[indexPath.row]
         cell.textLabel?.text = user.name
         cell.detailTextLabel?.text = user.email
@@ -49,6 +49,8 @@ class NewMessageController: UITableViewController {
                 //user.setValuesForKeysWithDictionary(dictionary)
                 user.name = dictionary["name"] as? String
                 user.email = dictionary["email"] as? String
+                user.id = snapshot.key
+                
                 
                 self.users.append(user)
                 
@@ -61,16 +63,19 @@ class NewMessageController: UITableViewController {
             }
             }, withCancelBlock: nil)
     }
-
-}
-
-class UserCell: UITableViewCell {
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: .Subtitle, reuseIdentifier: reuseIdentifier)
-        
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 70
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    var messagesController: MessagesViewController?
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        dismissViewControllerAnimated(true) {
+            print("dismiss completed")
+            let user = self.users[indexPath.row]
+            self.messagesController?.showChatControllerForUser(user)
+            
+        }
     }
+
 }
+
