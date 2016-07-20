@@ -161,6 +161,8 @@ class MessagesViewController: UITableViewController {
         containerView.translatesAutoresizingMaskIntoConstraints = false
         titleView.addSubview(containerView)
         
+        
+        
         let image = UIImage(named: "smalllogo")
         let barBetsImageView = UIImageView(image: image)
         barBetsImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -188,7 +190,25 @@ class MessagesViewController: UITableViewController {
         
         self.navigationItem.titleView = titleView
         
+        titleView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(launchCircleView)))
+        
         //titleView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showChatController)))
+        
+    }
+    
+    func launchCircleView() {
+        print("circle view made it ")
+        
+        let circleView = CollectionViewController(collectionViewLayout: CircularCollectionViewLayout())
+        
+        //navigationController?.pushViewController(circleView, animated: true)
+        
+        //let c = NewMessageController()
+        
+        circleView.circleView = circleView
+        let nav = UINavigationController(rootViewController: circleView)
+        presentViewController(nav, animated: true, completion: nil)
+        
         
     }
     

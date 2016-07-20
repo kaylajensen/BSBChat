@@ -68,6 +68,7 @@ class NewMessageController: UITableViewController {
     }
     
     var messagesController: MessagesViewController?
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         dismissViewControllerAnimated(true) {
             print("dismiss completed")
