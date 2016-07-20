@@ -22,12 +22,12 @@ class LoginViewController: UIViewController {
     
     lazy var loginRegisterButton: UIButton = {
         let button = UIButton(type: .System)
-        button.backgroundColor = UIColor(r: 80, g: 101, b: 161)
+        button.backgroundColor = UIColor(r: 0, g: 0, b: 0)
         button.setTitle("Register", forState: .Normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         button.titleLabel?.font = UIFont.boldSystemFontOfSize(16)
-        
+        button.layer.cornerRadius = 5
         button.addTarget(self, action: #selector(handleLoginRegister), forControlEvents: .TouchUpInside)
         return button
     }()
@@ -91,7 +91,11 @@ class LoginViewController: UIViewController {
     
     let nameTextField: UITextField = {
        let tf = UITextField()
-        tf.placeholder = "Name"
+        //tf.placeholder = "Name"
+        tf.attributedPlaceholder = NSAttributedString(string:"Name",
+                                                      attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        tf.font = UIFont.boldSystemFontOfSize(14)
+        tf.textColor = UIColor.whiteColor()
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
@@ -105,7 +109,11 @@ class LoginViewController: UIViewController {
     
     let emailTextField: UITextField = {
         let tf = UITextField()
-        tf.placeholder = "Email"
+        //tf.placeholder = "Email"
+        tf.attributedPlaceholder = NSAttributedString(string:"Email",
+                                                      attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        tf.font = UIFont.boldSystemFontOfSize(16)
+        tf.textColor = UIColor.whiteColor()
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
@@ -119,7 +127,11 @@ class LoginViewController: UIViewController {
     
     let passwordTextField: UITextField = {
         let tf = UITextField()
-        tf.placeholder = "Password"
+        //tf.placeholder = "Password"
+        tf.attributedPlaceholder = NSAttributedString(string:"Password",
+                                                               attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        tf.font = UIFont.boldSystemFontOfSize(16)
+        tf.textColor = UIColor.whiteColor()
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.secureTextEntry = true
         return tf
@@ -127,7 +139,7 @@ class LoginViewController: UIViewController {
     
     let profileImageView: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "arrows-2x")
+        image.image = UIImage(named: "barbetslogo")
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .ScaleAspectFill
         return image
@@ -167,10 +179,16 @@ class LoginViewController: UIViewController {
         
     }
     
+    //VIEW DID LOAD FUNCTION
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor(r: 61, g: 91, b: 151)
+        //view.backgroundColor = UIColor(r: 255, g: 128, b: 0)
+        let backgroundImage = UIImageView(frame: UIScreen.mainScreen().bounds)
+        backgroundImage.image = UIImage(named: "woodpattern.jpg")
+        backgroundImage.contentMode = .ScaleAspectFill
+        
+        self.view.insertSubview(backgroundImage, atIndex: 0)
         
         view.addSubview(inputsContainerView)
         view.addSubview(loginRegisterButton)
@@ -200,6 +218,7 @@ class LoginViewController: UIViewController {
         
         inputsContainerViewHeightAnchor = inputsContainerView.heightAnchor.constraintEqualToConstant(150)
         inputsContainerViewHeightAnchor?.active = true
+        inputsContainerView.backgroundColor = UIColor(white: 0, alpha: 0.25)
         
         inputsContainerView.addSubview(nameTextField)
         inputsContainerView.addSubview(nameSeperatorView)
@@ -243,14 +262,14 @@ class LoginViewController: UIViewController {
         loginRegisterButton.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
         loginRegisterButton.topAnchor.constraintEqualToAnchor(inputsContainerView.bottomAnchor, constant: 12).active = true
         loginRegisterButton.widthAnchor.constraintEqualToAnchor(inputsContainerView.widthAnchor).active = true
-        loginRegisterButton.heightAnchor.constraintEqualToConstant(50).active = true
+        loginRegisterButton.heightAnchor.constraintEqualToConstant(40).active = true
     }
     
     func setupProfileImageView() {
         profileImageView.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
         profileImageView.bottomAnchor.constraintEqualToAnchor(loginRegisterSegmentedControl.topAnchor, constant: -12).active = true
-        profileImageView.widthAnchor.constraintEqualToConstant(150).active = true
-        profileImageView.heightAnchor.constraintEqualToConstant(150).active = true
+        profileImageView.widthAnchor.constraintEqualToConstant(100).active = true
+        profileImageView.heightAnchor.constraintEqualToConstant(100).active = true
     }
     
     func setupLoginRegisterSegControl() {
