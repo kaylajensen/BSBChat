@@ -205,7 +205,7 @@ class MessagesViewController: UITableViewController {
         
         //let c = NewMessageController()
         
-        circleView.circleView = circleView
+        //circleView.circleView = circleView
         let nav = UINavigationController(rootViewController: circleView)
         presentViewController(nav, animated: true, completion: nil)
         

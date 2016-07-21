@@ -26,7 +26,7 @@ class CollectionViewController: UICollectionViewController {
 
     collectionView!.registerNib(UINib(nibName: "CircularCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
     
-    let imageView = UIImageView(image: UIImage(named: "wood-pattern.jpg"))
+    let imageView = UIImageView(image: UIImage(named: "woodpattern.jpg"))
     imageView.contentMode = UIViewContentMode.ScaleAspectFill
     collectionView!.backgroundView = imageView
     

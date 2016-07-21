@@ -24,14 +24,14 @@
         <!--Collection View Controller-->
         <scene sceneID="q2d-w2-kuh">
             <objects>
-                <collectionViewController id="HZE-Lr-Gu1" customClass="CollectionViewController" customModule="BarStoolsCircular" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="HZE-Lr-Gu1" customClass="CollectionViewController" customModule="BarBetsChat" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="rvD-sL-Ixt">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewLayout key="collectionViewLayout" id="TYp-qb-v3n" customClass="CircularCollectionViewLayout" customModule="BarStoolsCircular" customModuleProvider="target"/>
+                        <collectionViewLayout key="collectionViewLayout" id="TYp-qb-v3n" customClass="CircularCollectionViewLayout" customModule="BarBetsChat" customModuleProvider="target"/>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="bottom" reuseIdentifier="Cell" id="cj3-4Y-qNJ" customClass="CircularCollectionViewCell" customModule="BarStoolsCircular" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="bottom" reuseIdentifier="Cell" id="cj3-4Y-qNJ" customClass="CircularCollectionViewCell" customModule="BarBetsChat" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
