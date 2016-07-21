@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "0C014EB147FF228393C3B932B030670087EAF9AF",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "0C014EB147FF228393C3B932B030670087EAF9AF" : 0,
+    "A6C17A2D4B33AAEEDDF26C7AAE490A735716DC27" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "29DE5AB8-F83A-4277-A799-6C2F772D0F9D",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "0C014EB147FF228393C3B932B030670087EAF9AF" : "BSBChat\/",
+    "A6C17A2D4B33AAEEDDF26C7AAE490A735716DC27" : "BarStoolsCircular\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "BarBetsChat",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "BarBetsChat.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/kaylajensen\/BSBChat.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0C014EB147FF228393C3B932B030670087EAF9AF"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/kaylajensen\/BSBCircleMode.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A6C17A2D4B33AAEEDDF26C7AAE490A735716DC27"
+    }
+  ]
+}
