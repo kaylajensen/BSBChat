@@ -25,7 +25,6 @@ class UserCell: UITableViewCell {
                 timeLabel.text = dateFormatter.stringFromDate(timestampDate)
             }
             
-            
         }
     }
     

@@ -12,12 +12,12 @@ class CircularCollectionViewCell: UICollectionViewCell {
   
   var imageName = "" {
     didSet {
-      imageView!.image = UIImage(named: imageName)
+      imageView?.image = UIImage(named: imageName)
     }
   }
   var memberName = "" {
     didSet {
-      memberLabel!.text = memberName
+      memberLabel?.text = memberName
     }
   }
   

@@ -206,6 +206,7 @@ class MessagesViewController: UITableViewController {
         //let c = NewMessageController()
         
         //circleView.circleView = circleView
+        circleView.fetchUser()
         let nav = UINavigationController(rootViewController: circleView)
         presentViewController(nav, animated: true, completion: nil)
         
