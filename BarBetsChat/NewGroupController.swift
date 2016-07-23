@@ -10,11 +10,22 @@ import UIKit
 import Firebase
 
 
-class NewMessageController: UITableViewController {
+class NewGroupController: UITableViewController {
     
     let cellId = "cellId"
     
     var messagesController: MessagesViewController?
+    
+    lazy var addRmButton: UIButton = {
+        let button = UIButton(type: .System)
+        button.setTitle("Add", forState: .Normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.titleLabel?.font = UIFont.systemFontOfSize(10)
+        button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        button.layer.cornerRadius = 5
+        button.addTarget(self, action: #selector(setAddRemoveButton), forControlEvents: .TouchUpInside)
+        return button
+    }()
     
     var users = [User]()
     
@@ -22,20 +33,21 @@ class NewMessageController: UITableViewController {
         super.viewDidLoad()
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: #selector(handleCancel))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Users", style: .Plain, target: self, action: #selector(handleCreateGroupWithUsers))
         
+        self.view.addSubview(addRmButton)
+        
+        
+        addRmButton.rightAnchor.constraintEqualToAnchor(self.view.rightAnchor).active = true
+        addRmButton.topAnchor.constraintEqualToAnchor(self.view.topAnchor, constant: 28).active = true
+        addRmButton.widthAnchor.constraintEqualToConstant(20).active = true
+        addRmButton.heightAnchor.constraintEqualToConstant(20).active = true
         
         tableView.registerClass(UserCell.self, forCellReuseIdentifier: cellId)
         fetchUser()
     }
     
-    
     func handleCancel() {
         dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    func handleCreateGroupWithUsers() {
-        print("made it to handle creating new group with new users method")
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -44,12 +56,14 @@ class NewMessageController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellId, forIndexPath: indexPath) as! UserCell
-    
         let user = users[indexPath.row]
         cell.textLabel?.text = user.name
         cell.detailTextLabel?.text = user.email
-        
         return cell
+    }
+    
+    func setAddRemoveButton() {
+        
     }
     
     func fetchUser() {
@@ -72,25 +86,14 @@ class NewMessageController: UITableViewController {
         return 70
     }
     
-//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-////        dismissViewControllerAnimated(true) {
-////            print("dismiss completed")
-////            let user = self.users[indexPath.row]
-////            self.messagesController?.showChatControllerForUser(user)
-////            
-////        }
-//        
-//        if cell.textLabel?.text == "Add" {
-//            cell.textLabel?.text = "Remove"
-//        } else {
-//            cell.textLabel?.text = "Add"
-//        }
-//        tableView.reloadData()
-//        print("\(self.users[indexPath.row].name) was added to the group")
-//        
-//        
-//        
-//    }
-
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        dismissViewControllerAnimated(true) {
+            print("dismiss completed")
+            let user = self.users[indexPath.row]
+            self.messagesController?.showChatControllerForUser(user)
+            
+        }
+    }
+    
 }
 

@@ -13,10 +13,16 @@ class UserCell: UITableViewCell {
     
     var message: Message? {
         didSet {
-           
             setupName()
             
             detailTextLabel?.text = message?.text
+            
+            detailTextLabel?.textColor = UIColor.whiteColor()
+            textLabel?.textColor = UIColor.whiteColor()
+            textLabel?.font = UIFont.boldSystemFontOfSize(14)
+            timeLabel.textColor = UIColor.whiteColor()
+            
+            
             
             if let seconds = message?.timeStamp?.doubleValue {
                 let timestampDate = NSDate(timeIntervalSince1970: seconds)
@@ -46,12 +52,12 @@ class UserCell: UITableViewCell {
         }
     }
     
+    
     let barstoolImage: UIImageView = {
         let imageView = UIImageView()
-        let image = UIImage(named: "barstool")
+        let image = UIImage(named: "barrel")
         imageView.image = image
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.layer.cornerRadius = 3
         imageView.layer.masksToBounds = true
         imageView.contentMode = .ScaleToFill
         return imageView
@@ -72,15 +78,16 @@ class UserCell: UITableViewCell {
         addSubview(barstoolImage)
         addSubview(timeLabel)
         
-        barstoolImage.leftAnchor.constraintEqualToAnchor(self.leftAnchor, constant: 8).active = true
+        barstoolImage.leftAnchor.constraintEqualToAnchor(self.leftAnchor, constant: 10).active = true
         barstoolImage.centerYAnchor.constraintEqualToAnchor(self.centerYAnchor).active = true
-        barstoolImage.widthAnchor.constraintEqualToConstant(48).active = true
-        barstoolImage.heightAnchor.constraintEqualToConstant(48).active = true
+        barstoolImage.widthAnchor.constraintEqualToConstant(35).active = true
+        barstoolImage.heightAnchor.constraintEqualToConstant(35).active = true
         
         timeLabel.rightAnchor.constraintEqualToAnchor(self.rightAnchor).active = true
-        timeLabel.topAnchor.constraintEqualToAnchor(self.topAnchor, constant: 18).active = true
+        timeLabel.topAnchor.constraintEqualToAnchor(self.topAnchor, constant: 28).active = true
         timeLabel.widthAnchor.constraintEqualToConstant(100).active = true
         timeLabel.heightAnchor.constraintEqualToAnchor(textLabel?.heightAnchor).active = true
+        
         
     }
     override func layoutSubviews() {

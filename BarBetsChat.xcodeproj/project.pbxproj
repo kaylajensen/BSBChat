@@ -17,6 +17,7 @@
 		3259DE901D411BF100262D3E /* StoolsCircular.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3259DE8F1D411BF100262D3E /* StoolsCircular.storyboard */; };
 		9F7754791D3EC560003CA6CA /* NewMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7754781D3EC560003CA6CA /* NewMessageController.swift */; };
 		9F77547C1D3ECAC3003CA6CA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F77547B1D3ECAC3003CA6CA /* User.swift */; };
+		9F98225A1D42B44A0036BC03 /* NewGroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9822591D42B44A0036BC03 /* NewGroupController.swift */; };
 		9FA9FD781D3FCAB8002A59A1 /* ChatLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA9FD771D3FCAB8002A59A1 /* ChatLogController.swift */; };
 		9FA9FD7A1D3FDBE3002A59A1 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA9FD791D3FDBE3002A59A1 /* Message.swift */; };
 		9FA9FD7D1D3FE0BE002A59A1 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA9FD7C1D3FE0BE002A59A1 /* UserCell.swift */; };
@@ -40,6 +41,7 @@
 		9A1A1E0DC82AD44232F83E78 /* Pods-BarBetsChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BarBetsChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BarBetsChat/Pods-BarBetsChat.debug.xcconfig"; sourceTree = "<group>"; };
 		9F7754781D3EC560003CA6CA /* NewMessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMessageController.swift; sourceTree = "<group>"; };
 		9F77547B1D3ECAC3003CA6CA /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		9F9822591D42B44A0036BC03 /* NewGroupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGroupController.swift; sourceTree = "<group>"; };
 		9FA9FD771D3FCAB8002A59A1 /* ChatLogController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatLogController.swift; sourceTree = "<group>"; };
 		9FA9FD791D3FDBE3002A59A1 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		9FA9FD7C1D3FE0BE002A59A1 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				9FB5B6FD1D3E907400F52597 /* LoginViewController.swift */,
 				9FB5B6EC1D3E80BC00F52597 /* MessagesViewController.swift */,
 				9F7754781D3EC560003CA6CA /* NewMessageController.swift */,
+				9F9822591D42B44A0036BC03 /* NewGroupController.swift */,
 				9FA9FD771D3FCAB8002A59A1 /* ChatLogController.swift */,
 			);
 			name = Controller;
@@ -295,6 +298,7 @@
 				3259DE8B1D411BD100262D3E /* CircularCollectionViewLayout.swift in Sources */,
 				9FB5B6EB1D3E80BC00F52597 /* AppDelegate.swift in Sources */,
 				9FA9FD7A1D3FDBE3002A59A1 /* Message.swift in Sources */,
+				9F98225A1D42B44A0036BC03 /* NewGroupController.swift in Sources */,
 				3259DE8C1D411BD100262D3E /* CollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -16,12 +16,23 @@ class MessagesViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .Plain, target: self, action: #selector(handleLogout))
-        let image = UIImage(named: "Message-50")
+        let logoutImage = UIImage(named: "logout")
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: logoutImage, style: .Plain, target: self, action: #selector(handleLogout))
+        navigationItem.leftBarButtonItem?.tintColor = UIColor.darkGrayColor()
+        
+        let image = UIImage(named: "beer")
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: image, style: .Plain, target: self, action: #selector(handleNewMessage))
+        navigationItem.rightBarButtonItem?.tintColor = UIColor.darkGrayColor()
+        
+        navigationController?.navigationBar.backgroundColor = UIColor.clearColor()
+        
         checkIfUserIsLoggedIn()
         
+        let backgroundImage = UIImage(named: "woodpattern.jpg")
+        let background = UIImageView(image: backgroundImage)
         
+        background.contentMode = .ScaleAspectFill
+        tableView.backgroundView = background
         
         tableView.registerClass(UserCell.self, forCellReuseIdentifier: cellId)
     }
@@ -48,7 +59,6 @@ class MessagesViewController: UITableViewController {
                     message.text = dictionary["text"] as? String
                     message.toId = dictionary["toId"] as? String
                     message.timeStamp = dictionary["timestamp"] as? NSNumber
-                    //self.messages.append(message)
                     
                     // this groups the messages through a message dictionary
                     if let toId = message.toId {
@@ -68,8 +78,6 @@ class MessagesViewController: UITableViewController {
             
         }, withCancelBlock: nil)
         
-        
-        
     }
     
     func observeMessages() {
@@ -82,7 +90,6 @@ class MessagesViewController: UITableViewController {
                 message.text = dictionary["text"] as? String
                 message.toId = dictionary["toId"] as? String
                 message.timeStamp = dictionary["timestamp"] as? NSNumber
-                //self.messages.append(message)
                 
                 // this groups the messages through a message dictionary
                 if let toId = message.toId {
@@ -92,7 +99,6 @@ class MessagesViewController: UITableViewController {
                         return m1.timeStamp?.intValue > m2.timeStamp?.intValue
                     })
                 }
-                
                 
                 dispatch_async(dispatch_get_main_queue(), {
                     self.tableView.reloadData()
@@ -104,11 +110,13 @@ class MessagesViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messages.count
     }
-    
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        cell.backgroundColor = UIColor.clearColor()
+    }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(cellId, forIndexPath: indexPath) as! UserCell
-        
         let message = messages[indexPath.row]
         cell.message = message
         
@@ -116,7 +124,17 @@ class MessagesViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 70
+        return 80
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let userId = FIRAuth.auth()?.currentUser?.uid
+        
+        let user = User()
+        user.id = userId
+        
+        showCircleController()
     }
     
     func checkIfUserIsLoggedIn() {
@@ -136,7 +154,7 @@ class MessagesViewController: UITableViewController {
             (snapshot) in
             
             if let dictionary = snapshot.value as? [String: AnyObject] {
-                self.navigationItem.title = dictionary["name"] as? String
+                self.navigationItem.title = (dictionary["name"] as? String)! + "'s Groups"
                 if let name = self.navigationItem.title {
                     self.setUpNavBar(name)
                 }
@@ -161,20 +179,18 @@ class MessagesViewController: UITableViewController {
         containerView.translatesAutoresizingMaskIntoConstraints = false
         titleView.addSubview(containerView)
         
-        
-        
         let image = UIImage(named: "smalllogo")
         let barBetsImageView = UIImageView(image: image)
         barBetsImageView.translatesAutoresizingMaskIntoConstraints = false
         barBetsImageView.contentMode = .ScaleAspectFill
-        barBetsImageView.layer.cornerRadius = 20
+        barBetsImageView.layer.cornerRadius = 5
         barBetsImageView.clipsToBounds = true
         containerView.addSubview(barBetsImageView)
         
         barBetsImageView.leftAnchor.constraintEqualToAnchor(containerView.leftAnchor).active = true
         barBetsImageView.centerYAnchor.constraintEqualToAnchor(containerView.centerYAnchor).active = true
-        barBetsImageView.widthAnchor.constraintEqualToConstant(40).active = true
-        barBetsImageView.heightAnchor.constraintEqualToConstant(40).active = true
+        barBetsImageView.widthAnchor.constraintEqualToConstant(30).active = true
+        barBetsImageView.heightAnchor.constraintEqualToConstant(30).active = true
         
         let nameLabel = UILabel()
         containerView.addSubview(nameLabel)
@@ -201,11 +217,6 @@ class MessagesViewController: UITableViewController {
         
         let circleView = CollectionViewController(collectionViewLayout: CircularCollectionViewLayout())
         
-        //navigationController?.pushViewController(circleView, animated: true)
-        
-        //let c = NewMessageController()
-        
-        //circleView.circleView = circleView
         circleView.fetchUser()
         let nav = UINavigationController(rootViewController: circleView)
         presentViewController(nav, animated: true, completion: nil)
@@ -217,6 +228,16 @@ class MessagesViewController: UITableViewController {
         let chatLogController = ChatLogController(collectionViewLayout: UICollectionViewFlowLayout())
         chatLogController.user = user
         navigationController?.pushViewController(chatLogController, animated: true)
+    }
+    
+    func showCircleController() {
+        
+        let circleView = CollectionViewController(collectionViewLayout: CircularCollectionViewLayout())
+        circleView.messagesController = self
+        
+        circleView.fetchUser()
+        let nav = UINavigationController(rootViewController: circleView)
+        presentViewController(nav, animated: true, completion: nil)
     }
     
     func handleLogout() {
@@ -237,6 +258,13 @@ class MessagesViewController: UITableViewController {
         newMessageController.messagesController = self
         let nav = UINavigationController(rootViewController: newMessageController)
         presentViewController(nav, animated: true, completion: nil)
+        
+//        let newGroupController = NewGroupController()
+//        newGroupController.messagesController = self
+//        let nav = UINavigationController(rootViewController: newGroupController)
+//        presentViewController(nav, animated: true, completion: nil)
+        
+        //showCircleController()
     }
 
 }

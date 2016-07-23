@@ -10,6 +10,7 @@ import UIKit
 
 class CircularCollectionViewCell: UICollectionViewCell {
   
+    
   var imageName = "" {
     didSet {
       imageView?.image = UIImage(named: imageName)
