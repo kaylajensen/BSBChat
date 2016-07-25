@@ -11,44 +11,13 @@ import Firebase
 
 class UserCell: UITableViewCell {
     
-    var message: Message? {
+    var group: Group? {
         didSet {
-            setupName()
-            
-            detailTextLabel?.text = message?.text
             
             detailTextLabel?.textColor = UIColor.whiteColor()
             textLabel?.textColor = UIColor.whiteColor()
-            textLabel?.font = UIFont.boldSystemFontOfSize(14)
-            timeLabel.textColor = UIColor.whiteColor()
+            textLabel?.font = UIFont.boldSystemFontOfSize(17)
             
-            
-            
-            if let seconds = message?.timeStamp?.doubleValue {
-                let timestampDate = NSDate(timeIntervalSince1970: seconds)
-                let dateFormatter = NSDateFormatter()
-                dateFormatter.dateFormat = "hh:mm:ss a"
-                timeLabel.text = dateFormatter.stringFromDate(timestampDate)
-            }
-            
-        }
-    }
-    
-    private func setupName() {
-        let chatPartnerId: String?
-        //checking if the person logged in was the person to send the message
-        if message?.fromId == FIRAuth.auth()?.currentUser?.uid {
-            chatPartnerId = message?.toId
-        } else {
-            chatPartnerId = message?.fromId
-        }
-        if let id = chatPartnerId {
-            let ref = FIRDatabase.database().reference().child("users").child(id)
-            ref.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-                if let dictionary = snapshot.value as? [String: AnyObject] {
-                    self.textLabel?.text = dictionary["name"] as? String
-                }
-                }, withCancelBlock: nil)
         }
     }
     
@@ -63,31 +32,49 @@ class UserCell: UITableViewCell {
         return imageView
     }()
     
-    let timeLabel: UILabel = {
-        let label = UILabel()
-        //label.text = "HH:MM:SS"
-        label.font = UIFont.systemFontOfSize(12)
-        label.textColor = UIColor.lightGrayColor()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    lazy var addButton: UIButton = {
+        let button = UIButton(type: .System)
+        button.backgroundColor = UIColor.blackColor()
+        button.setTitle("+", forState: .Normal)
+        button.backgroundColor = UIColor.darkGrayColor()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.titleLabel?.font = UIFont.systemFontOfSize(20)
+        button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        button.layer.cornerRadius = 15
+        button.addTarget(self, action: #selector(go), forControlEvents: .TouchUpInside)
+        return button
     }()
+    
+    func go() {
+        print("button tapped")
+        
+        if addButton.titleLabel?.text == "+" {
+            addButton.setTitle("-", forState: .Normal)
+            addButton.backgroundColor = UIColor.redColor()
+        } else {
+            addButton.setTitle("+", forState: .Normal)
+            addButton.backgroundColor = UIColor.darkGrayColor()
+        }
+        
+    }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: .Subtitle, reuseIdentifier: reuseIdentifier)
         
         addSubview(barstoolImage)
-        addSubview(timeLabel)
+        addSubview(addButton)
         
         barstoolImage.leftAnchor.constraintEqualToAnchor(self.leftAnchor, constant: 10).active = true
         barstoolImage.centerYAnchor.constraintEqualToAnchor(self.centerYAnchor).active = true
         barstoolImage.widthAnchor.constraintEqualToConstant(35).active = true
         barstoolImage.heightAnchor.constraintEqualToConstant(35).active = true
         
-        timeLabel.rightAnchor.constraintEqualToAnchor(self.rightAnchor).active = true
-        timeLabel.topAnchor.constraintEqualToAnchor(self.topAnchor, constant: 28).active = true
-        timeLabel.widthAnchor.constraintEqualToConstant(100).active = true
-        timeLabel.heightAnchor.constraintEqualToAnchor(textLabel?.heightAnchor).active = true
+        addButton.rightAnchor.constraintEqualToAnchor(self.rightAnchor, constant: -15).active = true
+        addButton.topAnchor.constraintEqualToAnchor(self.topAnchor, constant: 22).active = true
+        addButton.widthAnchor.constraintEqualToConstant(30).active = true
+        addButton.heightAnchor.constraintEqualToConstant(30).active = true
         
+
         
     }
     override func layoutSubviews() {

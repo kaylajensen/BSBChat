@@ -38,87 +38,135 @@ class MessagesViewController: UITableViewController {
     }
     
     var messages = [Message]()
+    var groups = [Group]()
     var messagesDictionary = [String: Message]()
     
-    func observeUserMessages() {
+    
+    func observeUsersGroups() {
         
         guard let uid = FIRAuth.auth()?.currentUser?.uid else {
             return
         }
-        let ref = FIRDatabase.database().reference().child("user-messages").child(uid)
-        ref.observeEventType(.ChildAdded, withBlock: { (snapshot) in
-            
-            let messageId = snapshot.key
-            let messageRef = FIRDatabase.database().reference().child("messages").child(messageId)
-            
-            messageRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-
-                if let dictionary = snapshot.value as? [String: AnyObject] {
-                    let message = Message()
-                    message.fromId = dictionary["fromId"] as? String
-                    message.text = dictionary["text"] as? String
-                    message.toId = dictionary["toId"] as? String
-                    message.timeStamp = dictionary["timestamp"] as? NSNumber
-                    
-                    // this groups the messages through a message dictionary
-                    if let toId = message.toId {
-                        self.messagesDictionary[toId] = message
-                        self.messages = Array(self.messagesDictionary.values)
-                        self.messages.sortInPlace({ (m1, m2) -> Bool in
-                            return m1.timeStamp?.intValue > m2.timeStamp?.intValue
-                        })
-                    }
-                    
-                    
-                    dispatch_async(dispatch_get_main_queue(), {
-                        self.tableView.reloadData()
-                    })
-                }
-                }, withCancelBlock: nil)
-            
-        }, withCancelBlock: nil)
         
-    }
-    
-    func observeMessages() {
-        let ref = FIRDatabase.database().reference().child("messages")
+        let ref = FIRDatabase.database().reference().child("users").child(uid).child("groups")
         ref.observeEventType(.ChildAdded, withBlock: { (snapshot) in
             
-            if let dictionary = snapshot.value as? [String: AnyObject] {
-                let message = Message()
-                message.fromId = dictionary["fromId"] as? String
-                message.text = dictionary["text"] as? String
-                message.toId = dictionary["toId"] as? String
-                message.timeStamp = dictionary["timestamp"] as? NSNumber
+            let groupId = snapshot.key
+            let groupRef = FIRDatabase.database().reference().child("groups").child(groupId)
+            
+            groupRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
                 
-                // this groups the messages through a message dictionary
-                if let toId = message.toId {
-                    self.messagesDictionary[toId] = message
-                    self.messages = Array(self.messagesDictionary.values)
-                    self.messages.sortInPlace({ (m1, m2) -> Bool in
-                        return m1.timeStamp?.intValue > m2.timeStamp?.intValue
-                    })
+                if let dictionary = snapshot.value as? [String: AnyObject] {
+                    
+                    let group = Group()
+                    group.groupName = dictionary["name"] as? String
+                    group.groupDescription = dictionary["description"] as? String
+                    group.createdByUserId = dictionary["createdBy"] as? String
+                    group.groupMemberIds = dictionary["members"] as? [String]
+                    group.groupId = dictionary["groupId"] as? String
+                    
+                    self.groups.append(group)
                 }
                 
                 dispatch_async(dispatch_get_main_queue(), {
                     self.tableView.reloadData()
                 })
-            }
+                
+                
+                }, withCancelBlock: nil)
+            
             }, withCancelBlock: nil)
     }
     
+    
+//    func observeUserMessages() {
+//        
+//        guard let uid = FIRAuth.auth()?.currentUser?.uid else {
+//            return
+//        }
+//        let ref = FIRDatabase.database().reference().child("user-messages").child(uid)
+//        ref.observeEventType(.ChildAdded, withBlock: { (snapshot) in
+//            
+//            let messageId = snapshot.key
+//            let messageRef = FIRDatabase.database().reference().child("messages").child(messageId)
+//            
+//            messageRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+//
+//                if let dictionary = snapshot.value as? [String: AnyObject] {
+//                    let message = Message()
+//                    message.fromId = dictionary["fromId"] as? String
+//                    message.text = dictionary["text"] as? String
+//                    message.toId = dictionary["toId"] as? String
+//                    message.timeStamp = dictionary["timestamp"] as? NSNumber
+//                    
+//                    // this groups the messages through a message dictionary
+//                    if let toId = message.toId {
+//                        self.messagesDictionary[toId] = message
+//                        self.messages = Array(self.messagesDictionary.values)
+//                        self.messages.sortInPlace({ (m1, m2) -> Bool in
+//                            return m1.timeStamp?.intValue > m2.timeStamp?.intValue
+//                        })
+//                    }
+//                    
+//                    
+//                    dispatch_async(dispatch_get_main_queue(), {
+//                        self.tableView.reloadData()
+//                    })
+//                }
+//                }, withCancelBlock: nil)
+//            
+//        }, withCancelBlock: nil)
+//        
+//    }
+    
+//    func observeMessages() {
+//        let ref = FIRDatabase.database().reference().child("messages")
+//        ref.observeEventType(.ChildAdded, withBlock: { (snapshot) in
+//            
+//            if let dictionary = snapshot.value as? [String: AnyObject] {
+//                let message = Message()
+//                message.fromId = dictionary["fromId"] as? String
+//                message.text = dictionary["text"] as? String
+//                message.toId = dictionary["toId"] as? String
+//                message.timeStamp = dictionary["timestamp"] as? NSNumber
+//                
+//                // this groups the messages through a message dictionary
+//                if let toId = message.toId {
+//                    self.messagesDictionary[toId] = message
+//                    self.messages = Array(self.messagesDictionary.values)
+//                    self.messages.sortInPlace({ (m1, m2) -> Bool in
+//                        return m1.timeStamp?.intValue > m2.timeStamp?.intValue
+//                    })
+//                }
+//                
+//                dispatch_async(dispatch_get_main_queue(), {
+//                    self.tableView.reloadData()
+//                })
+//            }
+//            }, withCancelBlock: nil)
+//    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messages.count
+        return groups.count
     }
+    
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         
         cell.backgroundColor = UIColor.clearColor()
     }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(cellId, forIndexPath: indexPath) as! UserCell
-        let message = messages[indexPath.row]
-        cell.message = message
+        
+        
+        let group = groups[indexPath.row]
+        
+        cell.textLabel?.text = group.groupName
+        cell.detailTextLabel?.text = group.groupDescription
+        cell.group = group
+        
+        cell.addButton.hidden = true
         
         return cell
     }
@@ -133,6 +181,13 @@ class MessagesViewController: UITableViewController {
         
         let user = User()
         user.id = userId
+        
+        let index = groups[indexPath.row].groupId
+        let indexName = groups[indexPath.row].groupName
+        
+        print(index)
+        print(indexName)
+        
         
         showCircleController()
     }
@@ -167,11 +222,19 @@ class MessagesViewController: UITableViewController {
     
     func setUpNavBar(name: String) {
         
+        groups.removeAll()
+        
         messages.removeAll()
         messagesDictionary.removeAll()
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            self.tableView.reloadData()
+        })
+        
         tableView.reloadData()
         
-        observeUserMessages()
+        observeUsersGroups()
+        //observeUserMessages()
         
         let titleView = UIView()
         titleView.frame = CGRectMake(0, 0, 100, 40)
@@ -206,36 +269,38 @@ class MessagesViewController: UITableViewController {
         
         self.navigationItem.titleView = titleView
         
-        titleView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(launchCircleView)))
+        //titleView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(launchCircleView)))
         
         //titleView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showChatController)))
         
     }
     
-    func launchCircleView() {
-        print("circle view made it ")
-        
-        let circleView = CollectionViewController(collectionViewLayout: CircularCollectionViewLayout())
-        
-        circleView.fetchUser()
-        let nav = UINavigationController(rootViewController: circleView)
-        presentViewController(nav, animated: true, completion: nil)
-        
-        
-    }
-    
-    func showChatControllerForUser(user: User) {
-        let chatLogController = ChatLogController(collectionViewLayout: UICollectionViewFlowLayout())
-        chatLogController.user = user
-        navigationController?.pushViewController(chatLogController, animated: true)
-    }
+//    func launchCircleView() {
+//        print("1")
+//        let circleView = CollectionViewController(collectionViewLayout: CircularCollectionViewLayout())
+//        
+//        circleView.fetchUser()
+//        let nav = UINavigationController(rootViewController: circleView)
+//        presentViewController(nav, animated: true, completion: nil)
+//        
+//        
+//    }
+//    
+//    func showChatControllerForUser(user: User) {
+//        print("2")
+//        let chatLogController = ChatLogController(collectionViewLayout: UICollectionViewFlowLayout())
+//        chatLogController.user = user
+//        navigationController?.pushViewController(chatLogController, animated: true)
+//    }
     
     func showCircleController() {
+        print("3")
         
         let circleView = CollectionViewController(collectionViewLayout: CircularCollectionViewLayout())
         circleView.messagesController = self
         
         circleView.fetchUser()
+        
         let nav = UINavigationController(rootViewController: circleView)
         presentViewController(nav, animated: true, completion: nil)
     }
@@ -253,18 +318,14 @@ class MessagesViewController: UITableViewController {
         presentViewController(loginVC, animated: true, completion: nil)
         
     }
+    
     func handleNewMessage() {
+        
         let newMessageController = NewMessageController()
         newMessageController.messagesController = self
         let nav = UINavigationController(rootViewController: newMessageController)
         presentViewController(nav, animated: true, completion: nil)
         
-//        let newGroupController = NewGroupController()
-//        newGroupController.messagesController = self
-//        let nav = UINavigationController(rootViewController: newGroupController)
-//        presentViewController(nav, animated: true, completion: nil)
-        
-        //showCircleController()
     }
 
 }

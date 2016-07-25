@@ -86,14 +86,14 @@ class NewGroupController: UITableViewController {
         return 70
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        dismissViewControllerAnimated(true) {
-            print("dismiss completed")
-            let user = self.users[indexPath.row]
-            self.messagesController?.showChatControllerForUser(user)
-            
-        }
-    }
+//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        dismissViewControllerAnimated(true) {
+//            print("dismiss completed")
+//            let user = self.users[indexPath.row]
+//            self.messagesController?.showChatControllerForUser(user)
+//            
+//        }
+//    }
     
 }
 

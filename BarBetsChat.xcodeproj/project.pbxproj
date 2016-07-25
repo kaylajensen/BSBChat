@@ -15,6 +15,7 @@
 		3259DE8C1D411BD100262D3E /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3259DE891D411BD100262D3E /* CollectionViewController.swift */; };
 		3259DE8E1D411BE200262D3E /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 3259DE8D1D411BE200262D3E /* Images */; };
 		3259DE901D411BF100262D3E /* StoolsCircular.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3259DE8F1D411BF100262D3E /* StoolsCircular.storyboard */; };
+		32D3BF781D468AD300839A29 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D3BF771D468AD300839A29 /* Group.swift */; };
 		9F7754791D3EC560003CA6CA /* NewMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7754781D3EC560003CA6CA /* NewMessageController.swift */; };
 		9F77547C1D3ECAC3003CA6CA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F77547B1D3ECAC3003CA6CA /* User.swift */; };
 		9F98225A1D42B44A0036BC03 /* NewGroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9822591D42B44A0036BC03 /* NewGroupController.swift */; };
@@ -37,6 +38,7 @@
 		3259DE891D411BD100262D3E /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		3259DE8D1D411BE200262D3E /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
 		3259DE8F1D411BF100262D3E /* StoolsCircular.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StoolsCircular.storyboard; sourceTree = "<group>"; };
+		32D3BF771D468AD300839A29 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		8EF65C412C03511AFD9729EC /* Pods-BarBetsChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BarBetsChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-BarBetsChat/Pods-BarBetsChat.release.xcconfig"; sourceTree = "<group>"; };
 		9A1A1E0DC82AD44232F83E78 /* Pods-BarBetsChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BarBetsChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BarBetsChat/Pods-BarBetsChat.debug.xcconfig"; sourceTree = "<group>"; };
 		9F7754781D3EC560003CA6CA /* NewMessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMessageController.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 			children = (
 				9F77547B1D3ECAC3003CA6CA /* User.swift */,
 				9FA9FD791D3FDBE3002A59A1 /* Message.swift */,
+				32D3BF771D468AD300839A29 /* Group.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				9F7754791D3EC560003CA6CA /* NewMessageController.swift in Sources */,
 				9FB5B6FE1D3E907400F52597 /* LoginViewController.swift in Sources */,
 				9FB5B6ED1D3E80BC00F52597 /* MessagesViewController.swift in Sources */,
+				32D3BF781D468AD300839A29 /* Group.swift in Sources */,
 				9F77547C1D3ECAC3003CA6CA /* User.swift in Sources */,
 				3259DE8B1D411BD100262D3E /* CircularCollectionViewLayout.swift in Sources */,
 				9FB5B6EB1D3E80BC00F52597 /* AppDelegate.swift in Sources */,
