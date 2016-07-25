@@ -13,11 +13,7 @@ let reuseIdentifier = "Cell"
 
 class CollectionViewController: UICollectionViewController {
     
-//    var user: User? {
-//        didSet {
-//            
-//        }
-//    }
+    var group: Group?
     var user: User?
     var users = [User]()
     var messagesController: MessagesViewController?
@@ -103,26 +99,33 @@ extension CollectionViewController
     
     
     func fetchUser() {
-        FIRDatabase.database().reference().child("users").observeEventType(.ChildAdded, withBlock: { (snapshot) in
+        
+        let groupMembers = group?.groupMemberIds
+        
+        for member in 0...groupMembers!.count-1 {
+            print(groupMembers![member])
+            let m = groupMembers![member]
             
-            if let dictionary = snapshot.value as? [String: AnyObject] {
-                let user = User()
-                user.name = dictionary["name"] as? String
-                user.email = dictionary["email"] as? String
-                user.id = snapshot.key
+            let ref = FIRDatabase.database().reference().child("users").child(m)
+            ref.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
                 
-                self.users.append(user)
+                print(snapshot)
                 
-                print(user.name)
+                if let dictionary = snapshot.value as? [String: AnyObject] {
+                    let user = User()
+                    user.name = dictionary["name"] as? String
+                    user.id = dictionary["id"] as? String
+                    user.email = dictionary["email"] as? String
+                    self.users.append(user)
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.collectionView!.reloadData()
+                    })
+                }
                 
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.collectionView!.reloadData()
-                })
-            }
-            }, withCancelBlock: nil)
-        
-        
-        
+                }, withCancelBlock: nil)
+        }
+
+
     }
     
     

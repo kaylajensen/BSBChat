@@ -40,6 +40,8 @@ class MessagesViewController: UITableViewController {
     var messages = [Message]()
     var groups = [Group]()
     var messagesDictionary = [String: Message]()
+    var clickedGroup: Group?
+    
     
     
     func observeUsersGroups() {
@@ -177,18 +179,17 @@ class MessagesViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        let userId = FIRAuth.auth()?.currentUser?.uid
-        
-        let user = User()
-        user.id = userId
-        
-        let index = groups[indexPath.row].groupId
-        let indexName = groups[indexPath.row].groupName
-        
-        print(index)
-        print(indexName)
-        
-        
+//        let userId = FIRAuth.auth()?.currentUser?.uid
+//        
+//        let user = User()
+//        user.id = userId
+//        
+//        let index = groups[indexPath.row].groupId
+//        let indexName = groups[indexPath.row].groupName
+//        
+//        print(index)
+        print("\(groups[indexPath.row].groupName) selected")
+        clickedGroup = groups[indexPath.row]
         showCircleController()
     }
     
@@ -296,8 +297,13 @@ class MessagesViewController: UITableViewController {
     func showCircleController() {
         print("3")
         
+        
+        
         let circleView = CollectionViewController(collectionViewLayout: CircularCollectionViewLayout())
         circleView.messagesController = self
+        
+        circleView.group = clickedGroup
+        
         
         circleView.fetchUser()
         
