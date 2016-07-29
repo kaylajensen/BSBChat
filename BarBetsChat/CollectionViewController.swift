@@ -22,7 +22,7 @@ class CollectionViewController: UICollectionViewController {
     let logoView = UIImageView(image: UIImage(named: "barbetslogo.png"))
     let images: [String] = NSBundle.mainBundle().pathsForResourcesOfType("png", inDirectory: "Images")
     var selectedPlayer : String = ""
-    let names: [String] = ["Kayla","Corbin","Eric","Allison","Mattie","Bryce","Kenzie","Storto","Sarah","Phil","Ally","Michael"]
+    
     
     lazy var groupButton: UIButton = {
         let button = UIButton(type: .System)
@@ -36,17 +36,31 @@ class CollectionViewController: UICollectionViewController {
         return button
     }()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBarHidden = true
+        //navigationController?.navigationBarHidden = true
         
-        self.view.addSubview(groupButton)
+        let backImage = UIImage(named: "back")
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: backImage, style: .Plain, target: self, action: #selector(handleBack))
+        navigationItem.leftBarButtonItem?.tintColor = UIColor.whiteColor()
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.translucent = true
+        
+        //self.view.addSubview(groupButton)
         self.view.addSubview(logoView)
         
-        groupButton.centerXAnchor.constraintEqualToAnchor(logoView.centerXAnchor).active = true
-        groupButton.centerYAnchor.constraintEqualToAnchor(self.view.centerYAnchor).active = true
-        groupButton.widthAnchor.constraintEqualToConstant(120).active = true
-        groupButton.heightAnchor.constraintEqualToConstant(40).active = true
+        
+        
+        
+        
+//        
+//        groupButton.centerXAnchor.constraintEqualToAnchor(logoView.centerXAnchor).active = true
+//        groupButton.centerYAnchor.constraintEqualToAnchor(self.view.centerYAnchor).active = true
+//        groupButton.widthAnchor.constraintEqualToConstant(120).active = true
+//        groupButton.heightAnchor.constraintEqualToConstant(40).active = true
         
         collectionView!.registerNib(UINib(nibName: "CircularCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
         
@@ -54,12 +68,16 @@ class CollectionViewController: UICollectionViewController {
         imageView.contentMode = UIViewContentMode.ScaleAspectFill
         collectionView!.backgroundView = imageView
         
-        logoView.frame = CGRectMake(self.view.bounds.size.width/15, self.view.bounds.size.height/10, 325, 110)
+        logoView.frame = CGRectMake(self.view.bounds.size.width/15, self.view.bounds.size.height/8, 325, 110)
         
     }
+    
     func addGroupButton() {
         
         
+    }
+    func handleBack() {
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
 }
@@ -71,6 +89,10 @@ extension CollectionViewController
                                  numberOfItemsInSection section: Int) -> Int {
         
         if users.count == 0 {
+            let userDummy = User()
+            userDummy.name = "No members"
+            users.append(userDummy)
+            
             return 1
         }
         else {
@@ -78,8 +100,8 @@ extension CollectionViewController
         }
     }
     
-    override func collectionView(collectionView: UICollectionView,
-                                 cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! CircularCollectionViewCell
         let path = indexPath.row
         let user = users[path]
@@ -93,7 +115,17 @@ extension CollectionViewController
         
         print("\(users[indexPath.row].name) was selected")
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        let cameraVC = CameraViewController()
+        cameraVC.messagesController = self.messagesController
+        cameraVC.currentBettie = users[indexPath.row]
+        cameraVC.currentGroupId = group?.groupId
+        let nav = UINavigationController(rootViewController: cameraVC)
+        presentViewController(nav, animated: true, completion: nil)
+        
+        
+        //self.dismissViewControllerAnimated(true, completion: nil)
+        
+        
         
     }
     
@@ -108,8 +140,6 @@ extension CollectionViewController
             
             let ref = FIRDatabase.database().reference().child("users").child(m)
             ref.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-                
-                print(snapshot)
                 
                 if let dictionary = snapshot.value as? [String: AnyObject] {
                     let user = User()

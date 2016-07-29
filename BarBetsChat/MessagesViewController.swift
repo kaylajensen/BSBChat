@@ -12,37 +12,36 @@ import Firebase
 class MessagesViewController: UITableViewController {
 
     let cellId = "cellId"
+    var messages = [Message]()
+    var groups = [Group]()
+    var messagesDictionary = [String: Message]()
+    var clickedGroup: Group?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let logoutImage = UIImage(named: "logout")
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: logoutImage, style: .Plain, target: self, action: #selector(handleLogout))
-        navigationItem.leftBarButtonItem?.tintColor = UIColor.darkGrayColor()
+        navigationItem.leftBarButtonItem?.tintColor = UIColor.whiteColor()
         
         let image = UIImage(named: "beer")
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: image, style: .Plain, target: self, action: #selector(handleNewMessage))
-        navigationItem.rightBarButtonItem?.tintColor = UIColor.darkGrayColor()
+        navigationItem.rightBarButtonItem?.tintColor = UIColor.whiteColor()
         
-        navigationController?.navigationBar.backgroundColor = UIColor.clearColor()
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.translucent = true
+        
         
         checkIfUserIsLoggedIn()
         
         let backgroundImage = UIImage(named: "woodpattern.jpg")
         let background = UIImageView(image: backgroundImage)
-        
         background.contentMode = .ScaleAspectFill
         tableView.backgroundView = background
         
         tableView.registerClass(UserCell.self, forCellReuseIdentifier: cellId)
     }
-    
-    var messages = [Message]()
-    var groups = [Group]()
-    var messagesDictionary = [String: Message]()
-    var clickedGroup: Group?
-    
-    
     
     func observeUsersGroups() {
         
@@ -67,12 +66,15 @@ class MessagesViewController: UITableViewController {
                     group.groupMemberIds = dictionary["members"] as? [String]
                     group.groupId = dictionary["groupId"] as? String
                     
-                    self.groups.append(group)
+                    if group.groupId != self.groups.last?.groupId {
+                        print(group.groupName)
+                        self.groups.append(group)
+                    }
+                    
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.tableView.reloadData()
+                    })
                 }
-                
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.tableView.reloadData()
-                })
                 
                 
                 }, withCancelBlock: nil)
@@ -160,34 +162,29 @@ class MessagesViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(cellId, forIndexPath: indexPath) as! UserCell
-        
-        
         let group = groups[indexPath.row]
         
         cell.textLabel?.text = group.groupName
         cell.detailTextLabel?.text = group.groupDescription
         cell.group = group
         
+        
+        
         cell.addButton.hidden = true
         
         return cell
     }
     
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 80
+        return 100
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-//        let userId = FIRAuth.auth()?.currentUser?.uid
-//        
-//        let user = User()
-//        user.id = userId
-//        
-//        let index = groups[indexPath.row].groupId
-//        let indexName = groups[indexPath.row].groupName
-//        
-//        print(index)
         print("\(groups[indexPath.row].groupName) selected")
         clickedGroup = groups[indexPath.row]
         showCircleController()
@@ -223,19 +220,11 @@ class MessagesViewController: UITableViewController {
     
     func setUpNavBar(name: String) {
         
+        print("before remove all")
         groups.removeAll()
-        
-        messages.removeAll()
-        messagesDictionary.removeAll()
-        
-        dispatch_async(dispatch_get_main_queue(), {
-            self.tableView.reloadData()
-        })
-        
-        tableView.reloadData()
+        print("immediately after")
         
         observeUsersGroups()
-        //observeUserMessages()
         
         let titleView = UIView()
         titleView.frame = CGRectMake(0, 0, 100, 40)
@@ -259,6 +248,8 @@ class MessagesViewController: UITableViewController {
         let nameLabel = UILabel()
         containerView.addSubview(nameLabel)
         nameLabel.text = name
+        nameLabel.font = UIFont.boldSystemFontOfSize(20)
+        nameLabel.textColor = UIColor.whiteColor()
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.leftAnchor.constraintEqualToAnchor(barBetsImageView.rightAnchor, constant: 8).active = true
         nameLabel.centerYAnchor.constraintEqualToAnchor(barBetsImageView.centerYAnchor).active = true
@@ -276,34 +267,13 @@ class MessagesViewController: UITableViewController {
         
     }
     
-//    func launchCircleView() {
-//        print("1")
-//        let circleView = CollectionViewController(collectionViewLayout: CircularCollectionViewLayout())
-//        
-//        circleView.fetchUser()
-//        let nav = UINavigationController(rootViewController: circleView)
-//        presentViewController(nav, animated: true, completion: nil)
-//        
-//        
-//    }
-//    
-//    func showChatControllerForUser(user: User) {
-//        print("2")
-//        let chatLogController = ChatLogController(collectionViewLayout: UICollectionViewFlowLayout())
-//        chatLogController.user = user
-//        navigationController?.pushViewController(chatLogController, animated: true)
-//    }
-    
     func showCircleController() {
         print("3")
-        
-        
         
         let circleView = CollectionViewController(collectionViewLayout: CircularCollectionViewLayout())
         circleView.messagesController = self
         
         circleView.group = clickedGroup
-        
         
         circleView.fetchUser()
         
@@ -331,6 +301,8 @@ class MessagesViewController: UITableViewController {
         newMessageController.messagesController = self
         let nav = UINavigationController(rootViewController: newMessageController)
         presentViewController(nav, animated: true, completion: nil)
+        
+        print("back")
         
     }
 

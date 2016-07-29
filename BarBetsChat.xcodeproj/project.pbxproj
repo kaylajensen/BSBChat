@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		108239B3FAB3DE39644C1428 /* Pods_BarBetsChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8D4B472CE8859ACF9EC8C81 /* Pods_BarBetsChat.framework */; };
+		32196DFD1D4B8B480033A436 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32196DFC1D4B8B480033A436 /* CameraViewController.swift */; };
+		32196DFF1D4B90E30033A436 /* Bet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32196DFE1D4B90E30033A436 /* Bet.swift */; };
 		3259DE101D3FAE5000262D3E /* woodpattern.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3259DE0F1D3FAE5000262D3E /* woodpattern.jpg */; };
 		3259DE861D411BB600262D3E /* CircularCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3259DE851D411BB600262D3E /* CircularCollectionViewCell.swift */; };
 		3259DE8A1D411BD100262D3E /* CircularCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3259DE871D411BD100262D3E /* CircularCollectionViewCell.xib */; };
@@ -31,6 +33,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32196DFC1D4B8B480033A436 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		32196DFE1D4B90E30033A436 /* Bet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bet.swift; sourceTree = "<group>"; };
 		3259DE0F1D3FAE5000262D3E /* woodpattern.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = woodpattern.jpg; sourceTree = "<group>"; };
 		3259DE851D411BB600262D3E /* CircularCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularCollectionViewCell.swift; sourceTree = "<group>"; };
 		3259DE871D411BD100262D3E /* CircularCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CircularCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -98,6 +102,7 @@
 				9F77547B1D3ECAC3003CA6CA /* User.swift */,
 				9FA9FD791D3FDBE3002A59A1 /* Message.swift */,
 				32D3BF771D468AD300839A29 /* Group.swift */,
+				32196DFE1D4B90E30033A436 /* Bet.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -153,6 +158,7 @@
 				9F7754781D3EC560003CA6CA /* NewMessageController.swift */,
 				9F9822591D42B44A0036BC03 /* NewGroupController.swift */,
 				9FA9FD771D3FCAB8002A59A1 /* ChatLogController.swift */,
+				32196DFC1D4B8B480033A436 /* CameraViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -200,6 +206,7 @@
 				TargetAttributes = {
 					9FB5B6E61D3E80BB00F52597 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 9LGC8333PK;
 					};
 				};
 			};
@@ -301,7 +308,9 @@
 				9F77547C1D3ECAC3003CA6CA /* User.swift in Sources */,
 				3259DE8B1D411BD100262D3E /* CircularCollectionViewLayout.swift in Sources */,
 				9FB5B6EB1D3E80BC00F52597 /* AppDelegate.swift in Sources */,
+				32196DFF1D4B90E30033A436 /* Bet.swift in Sources */,
 				9FA9FD7A1D3FDBE3002A59A1 /* Message.swift in Sources */,
+				32196DFD1D4B8B480033A436 /* CameraViewController.swift in Sources */,
 				9F98225A1D42B44A0036BC03 /* NewGroupController.swift in Sources */,
 				3259DE8C1D411BD100262D3E /* CollectionViewController.swift in Sources */,
 			);
@@ -409,10 +418,13 @@
 			baseConfigurationReference = 9A1A1E0DC82AD44232F83E78 /* Pods-BarBetsChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = BarBetsChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kaylajensencoding.BarBetsChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -421,10 +433,13 @@
 			baseConfigurationReference = 8EF65C412C03511AFD9729EC /* Pods-BarBetsChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = BarBetsChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kaylajensencoding.BarBetsChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

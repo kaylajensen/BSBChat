@@ -16,15 +16,15 @@ class UserCell: UITableViewCell {
             
             detailTextLabel?.textColor = UIColor.whiteColor()
             textLabel?.textColor = UIColor.whiteColor()
-            textLabel?.font = UIFont.boldSystemFontOfSize(17)
-            
+            textLabel?.font = UIFont.boldSystemFontOfSize(19)
+            detailTextLabel?.font = UIFont.systemFontOfSize(15)
         }
     }
     
     
     let barstoolImage: UIImageView = {
         let imageView = UIImageView()
-        let image = UIImage(named: "barrel")
+        let image = UIImage(named: "whitebarrel")
         imageView.image = image
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.masksToBounds = true
@@ -64,10 +64,11 @@ class UserCell: UITableViewCell {
         addSubview(barstoolImage)
         addSubview(addButton)
         
-        barstoolImage.leftAnchor.constraintEqualToAnchor(self.leftAnchor, constant: 10).active = true
+        barstoolImage.leftAnchor.constraintEqualToAnchor(self.leftAnchor).active = true
         barstoolImage.centerYAnchor.constraintEqualToAnchor(self.centerYAnchor).active = true
-        barstoolImage.widthAnchor.constraintEqualToConstant(35).active = true
-        barstoolImage.heightAnchor.constraintEqualToConstant(35).active = true
+        barstoolImage.widthAnchor.constraintEqualToConstant(60).active = true
+        barstoolImage.heightAnchor.constraintEqualToConstant(60).active = true
+
         
         addButton.rightAnchor.constraintEqualToAnchor(self.rightAnchor, constant: -15).active = true
         addButton.topAnchor.constraintEqualToAnchor(self.topAnchor, constant: 22).active = true

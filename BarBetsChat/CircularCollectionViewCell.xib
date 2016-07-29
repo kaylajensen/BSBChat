@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,26 +13,29 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="177" height="184"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QgO-oB-kvF">
-                        <rect key="frame" x="0.0" y="0.0" width="177" height="184"/>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZPT-A1-sua">
-                        <rect key="frame" x="0.0" y="170" width="177" height="14"/>
-                        <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="10"/>
-                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <rect key="frame" x="0.0" y="0.0" width="177" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="PY3-gq-1Zh"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="15"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QgO-oB-kvF">
+                        <rect key="frame" x="0.0" y="22" width="177" height="162"/>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
-                <constraint firstItem="ZPT-A1-sua" firstAttribute="bottom" secondItem="gTV-IL-0wX" secondAttribute="bottomMargin" constant="8" id="K0U-Mn-Nzd"/>
-                <constraint firstItem="QgO-oB-kvF" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Tcl-rc-6ZB"/>
-                <constraint firstAttribute="trailing" secondItem="QgO-oB-kvF" secondAttribute="trailing" id="cgy-fz-3UB"/>
-                <constraint firstAttribute="bottom" secondItem="QgO-oB-kvF" secondAttribute="bottom" id="gns-ev-Fyt"/>
-                <constraint firstItem="QgO-oB-kvF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="jeQ-So-2YL"/>
-                <constraint firstItem="ZPT-A1-sua" firstAttribute="width" secondItem="QgO-oB-kvF" secondAttribute="width" id="kbG-ne-TZE"/>
-                <constraint firstItem="ZPT-A1-sua" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="lJr-3V-NaC"/>
+                <constraint firstItem="ZPT-A1-sua" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="FJc-FO-5Iz"/>
+                <constraint firstItem="ZPT-A1-sua" firstAttribute="trailing" secondItem="QgO-oB-kvF" secondAttribute="trailing" id="N25-Mn-dHO"/>
+                <constraint firstItem="ZPT-A1-sua" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="V8f-lx-B5Z"/>
+                <constraint firstAttribute="trailing" secondItem="ZPT-A1-sua" secondAttribute="trailing" id="gTN-IM-vOu"/>
+                <constraint firstItem="ZPT-A1-sua" firstAttribute="leading" secondItem="QgO-oB-kvF" secondAttribute="leading" id="pV7-77-bJS"/>
+                <constraint firstItem="QgO-oB-kvF" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="22" id="tec-dT-Yva"/>
+                <constraint firstAttribute="bottom" secondItem="QgO-oB-kvF" secondAttribute="bottom" id="vh5-Jp-NDD"/>
             </constraints>
             <size key="customSize" width="177" height="184"/>
             <connections>

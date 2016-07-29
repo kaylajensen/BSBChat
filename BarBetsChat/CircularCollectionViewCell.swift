@@ -9,47 +9,55 @@
 import UIKit
 
 class CircularCollectionViewCell: UICollectionViewCell {
-  
     
-  var imageName = "" {
-    didSet {
-      imageView?.image = UIImage(named: imageName)
+    
+    var imageName = "" {
+        didSet {
+            imageView?.image = UIImage(named: imageName)
+        }
     }
-  }
-  var memberName = "" {
-    didSet {
-      memberLabel?.text = memberName
+    var memberName = "" {
+        didSet {
+            let fullName: String = memberName
+            let fullNameArr = fullName.componentsSeparatedByString(" ")
+            let firstName: String = fullNameArr[0]
+            
+            memberLabel?.text = firstName
+            
+            memberLabel?.font = UIFont.boldSystemFontOfSize(14)
+            memberLabel?.textColor = UIColor.whiteColor()
+        }
     }
-  }
-  
-  @IBOutlet weak var imageView: UIImageView?
-  @IBOutlet weak var memberLabel: UILabel?
-  
-  required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
     
-    contentView.layer.shouldRasterize = true
-    contentView.layer.rasterizationScale = UIScreen.mainScreen().scale
-    contentView.clipsToBounds = true
     
-  }
+    
+    @IBOutlet weak var imageView: UIImageView?
+    @IBOutlet weak var memberLabel: UILabel?
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        contentView.layer.shouldRasterize = true
+        contentView.layer.rasterizationScale = UIScreen.mainScreen().scale
+        contentView.clipsToBounds = true
+        
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        print("testing")
     }
-  
-  override func awakeFromNib() {
-    super.awakeFromNib()
-    imageView!.contentMode = .ScaleAspectFill
-  }
-  
-  override func applyLayoutAttributes(layoutAttributes: UICollectionViewLayoutAttributes) {
-    super.applyLayoutAttributes(layoutAttributes)
-    let circularlayoutAttributes = layoutAttributes as! CircularCollectionViewLayoutAttributes
-    self.layer.anchorPoint = circularlayoutAttributes.anchorPoint
-    self.center.y += (circularlayoutAttributes.anchorPoint.y - 0.5)*CGRectGetHeight(self.bounds)
-  }
-  
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        imageView!.contentMode = .ScaleAspectFill
+    }
+    
+    override func applyLayoutAttributes(layoutAttributes: UICollectionViewLayoutAttributes) {
+        super.applyLayoutAttributes(layoutAttributes)
+        let circularlayoutAttributes = layoutAttributes as! CircularCollectionViewLayoutAttributes
+        self.layer.anchorPoint = circularlayoutAttributes.anchorPoint
+        self.center.y += (circularlayoutAttributes.anchorPoint.y - 0.5)*CGRectGetHeight(self.bounds)
+    }
+    
 }

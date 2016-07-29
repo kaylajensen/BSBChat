@@ -18,13 +18,25 @@ class NewMessageController: UITableViewController {
     
     var friendGroup = [User]()
     var users = [User]()
+    var group : Group?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: #selector(handleCancel))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Users", style: .Plain, target: self, action: #selector(handleCreateGroupWithUsers))
+        let backImage = UIImage(named: "back")
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: backImage, style: .Plain, target: self, action: #selector(handleCancel))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Create", style: .Plain, target: self, action: #selector(handleCreateGroupWithUsers))
+        navigationItem.leftBarButtonItem?.tintColor = UIColor.whiteColor()
+        navigationItem.rightBarButtonItem?.tintColor = UIColor.whiteColor()
         
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.translucent = true
+        
+        let backgroundImage = UIImage(named: "woodpattern.jpg")
+        let background = UIImageView(image: backgroundImage)
+        background.contentMode = .ScaleAspectFill
+        tableView.backgroundView = background
         
         tableView.registerClass(UserCell.self, forCellReuseIdentifier: cellId)
         fetchUser()
@@ -87,8 +99,6 @@ class NewMessageController: UITableViewController {
     func handleCreatingGroup(groupName: String,groupDescription: String) {
         print(groupName)
         print(groupDescription)
-    
-        
         
         let ref = FIRDatabase.database().reference().child("groups")
         let childRef = ref.childByAutoId()
@@ -99,6 +109,9 @@ class NewMessageController: UITableViewController {
         for f in 0...friendGroup.count-1 {
             friendIds.append(friendGroup[f].id!)
         }
+        
+        //add user who created the group
+        friendIds.append(fromId)
         
         let values = ["name": groupName, "description": groupDescription, "createdBy": fromId, "members": friendIds, "numusers": friendGroup.count, "groupId": childRef.key]
         
@@ -124,9 +137,16 @@ class NewMessageController: UITableViewController {
         
         dismissViewControllerAnimated(true) {
             print("dismiss completed")
+            
+            
         }
 
         
+    }
+    
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        cell.backgroundColor = UIColor.clearColor()
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -137,16 +157,19 @@ class NewMessageController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellId, forIndexPath: indexPath) as! UserCell
     
         let user = users[indexPath.row]
+    
         cell.textLabel?.text = user.name
-        cell.detailTextLabel?.text = user.email
+        //cell.detailTextLabel?.text = user.email
+        cell.group = group
         
+        cell.detailTextLabel?.hidden = true
         cell.addButton.tag = indexPath.row
         
-        cell.addButton.addTarget(self, action: #selector(testing), forControlEvents: .TouchUpInside)
+        cell.addButton.addTarget(self, action: #selector(handleAddOrRemove), forControlEvents: .TouchUpInside)
         return cell
     }
     
-    func testing(sender: UIButton) {
+    func handleAddOrRemove(sender: UIButton) {
         
         let index = sender.tag
         let user = users[index]
@@ -161,7 +184,6 @@ class NewMessageController: UITableViewController {
                     friendGroup.removeAtIndex(friendGroup.indexOf(user)!)
                 }
             }
-            
         }
 
         if friendGroup.count != 0 {
@@ -175,36 +197,29 @@ class NewMessageController: UITableViewController {
     
     func fetchUser() {
         FIRDatabase.database().reference().child("users").observeEventType(.ChildAdded, withBlock: { (snapshot) in
+            let currentUser = FIRAuth.auth()!.currentUser!.uid
+
             
             if let dictionary = snapshot.value as? [String: AnyObject] {
                 let user = User()
-                user.name = dictionary["name"] as? String
-                user.email = dictionary["email"] as? String
-                user.id = snapshot.key
-                self.users.append(user)
                 
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.tableView.reloadData()
-                })
+                if currentUser != snapshot.key {
+                    user.name = dictionary["name"] as? String
+                    user.email = dictionary["email"] as? String
+                    user.id = snapshot.key
+                    self.users.append(user)
+                    
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.tableView.reloadData()
+                     })
+                }
+               
             }
             }, withCancelBlock: nil)
     }
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 70
+        return 60
     }
-    
-//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-////        dismissViewControllerAnimated(true) {
-////            print("dismiss completed")
-////            let user = self.users[indexPath.row]
-////            self.messagesController?.showChatControllerForUser(user)
-////            
-////        }
-//        
-//        print("cell tapped")
-//        
-//        
-//    }
 
 }
 
