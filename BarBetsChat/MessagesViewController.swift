@@ -263,7 +263,12 @@ class MessagesViewController: UITableViewController {
         
         //titleView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(launchCircleView)))
         
-        //titleView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showChatController)))
+        titleView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showChatController)))
+        
+    }
+    
+    func showChatController() {
+        
         
     }
     

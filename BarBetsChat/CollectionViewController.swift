@@ -53,10 +53,6 @@ class CollectionViewController: UICollectionViewController {
         self.view.addSubview(logoView)
         
         
-        
-        
-        
-//        
 //        groupButton.centerXAnchor.constraintEqualToAnchor(logoView.centerXAnchor).active = true
 //        groupButton.centerYAnchor.constraintEqualToAnchor(self.view.centerYAnchor).active = true
 //        groupButton.widthAnchor.constraintEqualToConstant(120).active = true
@@ -85,14 +81,9 @@ class CollectionViewController: UICollectionViewController {
 extension CollectionViewController
 {
     
-    override func collectionView(collectionView: UICollectionView,
-                                 numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if users.count == 0 {
-            let userDummy = User()
-            userDummy.name = "No members"
-            users.append(userDummy)
-            
             return 1
         }
         else {
@@ -122,11 +113,7 @@ extension CollectionViewController
         let nav = UINavigationController(rootViewController: cameraVC)
         presentViewController(nav, animated: true, completion: nil)
         
-        
         //self.dismissViewControllerAnimated(true, completion: nil)
-        
-        
-        
     }
     
     
@@ -154,7 +141,6 @@ extension CollectionViewController
                 
                 }, withCancelBlock: nil)
         }
-
 
     }
     

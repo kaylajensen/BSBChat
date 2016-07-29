@@ -11,6 +11,7 @@ import Firebase
 
 class ChatLogController: UICollectionViewController, UITextFieldDelegate {
     
+    var messagesController: MessagesViewController?
     var user: User? {
         didSet {
             navigationItem.title = user?.name
