@@ -171,7 +171,7 @@ class NewMessageController: UITableViewController {
         cell.group = group
         
         cell.detailTextLabel?.hidden = true
-        cell.barstoolImage.hidden = true
+        //cell.barstoolImage.hidden = true
         cell.addButton.tag = indexPath.row
         
         cell.addButton.addTarget(self, action: #selector(handleAddOrRemove), forControlEvents: .TouchUpInside)
@@ -227,7 +227,7 @@ class NewMessageController: UITableViewController {
             }, withCancelBlock: nil)
     }
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 60
+        return 45
     }
 
 }

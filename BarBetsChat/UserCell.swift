@@ -16,8 +16,9 @@ class UserCell: UITableViewCell {
             
             detailTextLabel?.textColor = UIColor.whiteColor()
             textLabel?.textColor = UIColor.whiteColor()
-            textLabel?.font = UIFont.boldSystemFontOfSize(19)
-            detailTextLabel?.font = UIFont.systemFontOfSize(15)
+           // textLabel?.font = UIFont.boldSystemFontOfSize(19)
+            //textLabel?.font = UIFont.systemFontOfSize(19)
+            //detailTextLabel?.font = UIFont.systemFontOfSize(15)
             
         }
     }
@@ -65,14 +66,14 @@ class UserCell: UITableViewCell {
         addSubview(barstoolImage)
         addSubview(addButton)
         
-        barstoolImage.leftAnchor.constraintEqualToAnchor(self.leftAnchor).active = true
+        barstoolImage.leftAnchor.constraintEqualToAnchor(self.leftAnchor, constant: 20).active = true
         barstoolImage.centerYAnchor.constraintEqualToAnchor(self.centerYAnchor).active = true
-        barstoolImage.widthAnchor.constraintEqualToConstant(60).active = true
-        barstoolImage.heightAnchor.constraintEqualToConstant(60).active = true
+        barstoolImage.widthAnchor.constraintEqualToConstant(30).active = true
+        barstoolImage.heightAnchor.constraintEqualToConstant(30).active = true
 
         
         addButton.rightAnchor.constraintEqualToAnchor(self.rightAnchor, constant: -15).active = true
-        addButton.topAnchor.constraintEqualToAnchor(self.topAnchor, constant: 13).active = true
+        addButton.topAnchor.constraintEqualToAnchor(self.topAnchor, constant: 7).active = true
         addButton.widthAnchor.constraintEqualToConstant(30).active = true
         addButton.heightAnchor.constraintEqualToConstant(30).active = true
         

@@ -29,7 +29,6 @@ class LoginViewController: UIViewController {
         button.setTitle("Register", forState: .Normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        button.titleLabel?.font = UIFont.boldSystemFontOfSize(16)
         button.layer.cornerRadius = 5
         button.backgroundColor = UIColor.clearColor()
         button.layer.borderWidth = 1.0
@@ -103,7 +102,7 @@ class LoginViewController: UIViewController {
        let tf = UITextField()
         tf.attributedPlaceholder = NSAttributedString(string:"Name",
                                                       attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
-        tf.font = UIFont.boldSystemFontOfSize(16)
+        //tf.font = UIFont.boldSystemFontOfSize(16)
         tf.textColor = UIColor.whiteColor()
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
@@ -121,7 +120,7 @@ class LoginViewController: UIViewController {
         //tf.placeholder = "Email"
         tf.attributedPlaceholder = NSAttributedString(string:"Email",
                                                       attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
-        tf.font = UIFont.boldSystemFontOfSize(16)
+        //tf.font = UIFont.boldSystemFontOfSize(16)
         tf.textColor = UIColor.whiteColor()
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
@@ -136,10 +135,9 @@ class LoginViewController: UIViewController {
     
     let passwordTextField: UITextField = {
         let tf = UITextField()
-        //tf.placeholder = "Password"
         tf.attributedPlaceholder = NSAttributedString(string:"Password",
                                                                attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
-        tf.font = UIFont.boldSystemFontOfSize(16)
+        //tf.font = UIFont.boldSystemFontOfSize(16)
         tf.textColor = UIColor.whiteColor()
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.secureTextEntry = true
@@ -280,7 +278,7 @@ class LoginViewController: UIViewController {
         loginRegisterButton.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
         loginRegisterButton.topAnchor.constraintEqualToAnchor(inputsContainerView.bottomAnchor, constant: 12).active = true
         loginRegisterButton.widthAnchor.constraintEqualToAnchor(inputsContainerView.widthAnchor).active = true
-        loginRegisterButton.heightAnchor.constraintEqualToConstant(33).active = true
+        loginRegisterButton.heightAnchor.constraintEqualToConstant(27).active = true
     }
     
     func setupProfileImageView() {

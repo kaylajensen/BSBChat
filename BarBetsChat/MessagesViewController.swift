@@ -260,7 +260,7 @@ class MessagesViewController: UITableViewController {
         let nameLabel = UILabel()
         containerView.addSubview(nameLabel)
         nameLabel.text = name
-        nameLabel.font = UIFont.boldSystemFontOfSize(20)
+        //nameLabel.font = UIFont.boldSystemFontOfSize(20)
         nameLabel.textColor = UIColor.whiteColor()
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.leftAnchor.constraintEqualToAnchor(barBetsImageView.rightAnchor, constant: 8).active = true
@@ -287,7 +287,17 @@ class MessagesViewController: UITableViewController {
     func showCircleController() {
         print("3")
         
-        let circleView = CollectionViewController(collectionViewLayout: CircularCollectionViewLayout())
+//        let circleView = CollectionViewController(collectionViewLayout: CircularCollectionViewLayout())
+//        circleView.messagesController = self
+//        
+//        circleView.group = clickedGroup
+//        
+//        circleView.fetchUser()
+//        
+//        let nav = UINavigationController(rootViewController: circleView)
+//        presentViewController(nav, animated: true, completion: nil)
+        
+        let circleView = GroupCarouselViewController()
         circleView.messagesController = self
         
         circleView.group = clickedGroup
