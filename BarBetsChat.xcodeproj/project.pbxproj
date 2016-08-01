@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		108239B3FAB3DE39644C1428 /* Pods_BarBetsChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8D4B472CE8859ACF9EC8C81 /* Pods_BarBetsChat.framework */; };
+		321209ED1D4E9F9A008A525D /* texas.otf in Resources */ = {isa = PBXBuildFile; fileRef = 321209EC1D4E9F03008A525D /* texas.otf */; };
 		32196DFD1D4B8B480033A436 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32196DFC1D4B8B480033A436 /* CameraViewController.swift */; };
 		32196DFF1D4B90E30033A436 /* Bet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32196DFE1D4B90E30033A436 /* Bet.swift */; };
 		3259DE101D3FAE5000262D3E /* woodpattern.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3259DE0F1D3FAE5000262D3E /* woodpattern.jpg */; };
@@ -17,6 +18,7 @@
 		3259DE8C1D411BD100262D3E /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3259DE891D411BD100262D3E /* CollectionViewController.swift */; };
 		3259DE8E1D411BE200262D3E /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 3259DE8D1D411BE200262D3E /* Images */; };
 		3259DE901D411BF100262D3E /* StoolsCircular.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3259DE8F1D411BF100262D3E /* StoolsCircular.storyboard */; };
+		32C16D951D4E7BF200AEE73F /* paint.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 32C16D941D4E7BF200AEE73F /* paint.jpg */; };
 		32D3BF781D468AD300839A29 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D3BF771D468AD300839A29 /* Group.swift */; };
 		9F7754791D3EC560003CA6CA /* NewMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7754781D3EC560003CA6CA /* NewMessageController.swift */; };
 		9F77547C1D3ECAC3003CA6CA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F77547B1D3ECAC3003CA6CA /* User.swift */; };
@@ -33,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		321209EC1D4E9F03008A525D /* texas.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = texas.otf; sourceTree = "<group>"; };
 		32196DFC1D4B8B480033A436 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		32196DFE1D4B90E30033A436 /* Bet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bet.swift; sourceTree = "<group>"; };
 		3259DE0F1D3FAE5000262D3E /* woodpattern.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = woodpattern.jpg; sourceTree = "<group>"; };
@@ -42,6 +45,7 @@
 		3259DE891D411BD100262D3E /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		3259DE8D1D411BE200262D3E /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
 		3259DE8F1D411BF100262D3E /* StoolsCircular.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StoolsCircular.storyboard; sourceTree = "<group>"; };
+		32C16D941D4E7BF200AEE73F /* paint.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = paint.jpg; sourceTree = "<group>"; };
 		32D3BF771D468AD300839A29 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		8EF65C412C03511AFD9729EC /* Pods-BarBetsChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BarBetsChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-BarBetsChat/Pods-BarBetsChat.release.xcconfig"; sourceTree = "<group>"; };
 		9A1A1E0DC82AD44232F83E78 /* Pods-BarBetsChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BarBetsChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BarBetsChat/Pods-BarBetsChat.debug.xcconfig"; sourceTree = "<group>"; };
@@ -81,6 +85,14 @@
 				8EF65C412C03511AFD9729EC /* Pods-BarBetsChat.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		321209EB1D4E9EDC008A525D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				321209EC1D4E9F03008A525D /* texas.otf */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		3259DE911D411C2200262D3E /* CircleView */ = {
@@ -136,12 +148,14 @@
 		9FB5B6E91D3E80BC00F52597 /* BarBetsChat */ = {
 			isa = PBXGroup;
 			children = (
+				321209EB1D4E9EDC008A525D /* Resources */,
 				3259DE911D411C2200262D3E /* CircleView */,
 				9FA9FD7B1D3FE0AD002A59A1 /* View */,
 				9F77547A1D3ECAAF003CA6CA /* Model */,
 				9FB5B6FC1D3E905400F52597 /* Controller */,
 				9FB5B6EA1D3E80BC00F52597 /* AppDelegate.swift */,
 				9FB5B6F11D3E80BC00F52597 /* Assets.xcassets */,
+				32C16D941D4E7BF200AEE73F /* paint.jpg */,
 				3259DE0F1D3FAE5000262D3E /* woodpattern.jpg */,
 				9FB5B6F31D3E80BC00F52597 /* LaunchScreen.storyboard */,
 				9FB5B6F61D3E80BC00F52597 /* Info.plist */,
@@ -233,8 +247,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				321209ED1D4E9F9A008A525D /* texas.otf in Resources */,
 				3259DE901D411BF100262D3E /* StoolsCircular.storyboard in Resources */,
 				3259DE8A1D411BD100262D3E /* CircularCollectionViewCell.xib in Resources */,
+				32C16D951D4E7BF200AEE73F /* paint.jpg in Resources */,
 				9FB5B7001D3EAE9100F52597 /* GoogleService-Info.plist in Resources */,
 				9FB5B6F51D3E80BC00F52597 /* LaunchScreen.storyboard in Resources */,
 				9FB5B6F21D3E80BC00F52597 /* Assets.xcassets in Resources */,

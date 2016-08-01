@@ -31,6 +31,9 @@ class LoginViewController: UIViewController {
         button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         button.titleLabel?.font = UIFont.boldSystemFontOfSize(16)
         button.layer.cornerRadius = 5
+        button.backgroundColor = UIColor.clearColor()
+        button.layer.borderWidth = 1.0
+        button.layer.borderColor = UIColor.whiteColor().CGColor
         button.addTarget(self, action: #selector(handleLoginRegister), forControlEvents: .TouchUpInside)
         return button
     }()
@@ -98,10 +101,9 @@ class LoginViewController: UIViewController {
     
     let nameTextField: UITextField = {
        let tf = UITextField()
-        //tf.placeholder = "Name"
         tf.attributedPlaceholder = NSAttributedString(string:"Name",
                                                       attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
-        tf.font = UIFont.boldSystemFontOfSize(14)
+        tf.font = UIFont.boldSystemFontOfSize(16)
         tf.textColor = UIColor.whiteColor()
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
@@ -146,7 +148,7 @@ class LoginViewController: UIViewController {
     
     let profileImageView: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "barbetslogo")
+        image.image = UIImage(named: "bets")
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .ScaleAspectFill
         return image
@@ -182,7 +184,11 @@ class LoginViewController: UIViewController {
         passwordTextFieldHeightAnchor = passwordTextField.heightAnchor.constraintEqualToAnchor(inputsContainerView.heightAnchor, multiplier: loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 1/2 : 1/3)
         passwordTextFieldHeightAnchor?.active = true
         
-        
+        if loginRegisterSegmentedControl.selectedSegmentIndex == 0 {
+            nameSeperatorView.hidden = true
+        } else {
+            nameSeperatorView.hidden = false
+        }
         
     }
     
@@ -190,10 +196,15 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //view.backgroundColor = UIColor(r: 255, g: 128, b: 0)
         let backgroundImage = UIImageView(frame: UIScreen.mainScreen().bounds)
         backgroundImage.image = UIImage(named: "woodpattern.jpg")
-        backgroundImage.contentMode = .ScaleAspectFill
+        backgroundImage.contentMode = .ScaleToFill
+        
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = backgroundImage.bounds
+        blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight] // for supporting device rotation
+        backgroundImage.addSubview(blurEffectView)
         
         self.view.insertSubview(backgroundImage, atIndex: 0)
         
@@ -269,21 +280,21 @@ class LoginViewController: UIViewController {
         loginRegisterButton.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
         loginRegisterButton.topAnchor.constraintEqualToAnchor(inputsContainerView.bottomAnchor, constant: 12).active = true
         loginRegisterButton.widthAnchor.constraintEqualToAnchor(inputsContainerView.widthAnchor).active = true
-        loginRegisterButton.heightAnchor.constraintEqualToConstant(40).active = true
+        loginRegisterButton.heightAnchor.constraintEqualToConstant(33).active = true
     }
     
     func setupProfileImageView() {
         profileImageView.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
         profileImageView.bottomAnchor.constraintEqualToAnchor(loginRegisterSegmentedControl.topAnchor, constant: -12).active = true
-        profileImageView.widthAnchor.constraintEqualToConstant(100).active = true
-        profileImageView.heightAnchor.constraintEqualToConstant(100).active = true
+        profileImageView.widthAnchor.constraintEqualToConstant(125).active = true
+        profileImageView.heightAnchor.constraintEqualToConstant(125).active = true
     }
     
     func setupLoginRegisterSegControl() {
         loginRegisterSegmentedControl.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
         loginRegisterSegmentedControl.bottomAnchor.constraintEqualToAnchor(inputsContainerView.topAnchor,constant: -12).active = true
         loginRegisterSegmentedControl.widthAnchor.constraintEqualToAnchor(inputsContainerView.widthAnchor).active = true
-        loginRegisterSegmentedControl.heightAnchor.constraintEqualToConstant(30).active = true
+        loginRegisterSegmentedControl.heightAnchor.constraintEqualToConstant(25).active = true
     }
 
 }

@@ -23,6 +23,7 @@ class NewMessageController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         let backImage = UIImage(named: "back")
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: backImage, style: .Plain, target: self, action: #selector(handleCancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Create", style: .Plain, target: self, action: #selector(handleCreateGroupWithUsers))
@@ -35,8 +36,15 @@ class NewMessageController: UITableViewController {
         
         let backgroundImage = UIImage(named: "woodpattern.jpg")
         let background = UIImageView(image: backgroundImage)
-        background.contentMode = .ScaleAspectFill
+        background.contentMode = .ScaleToFill
         tableView.backgroundView = background
+        
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = background.bounds
+        blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight] // for supporting device rotation
+        background.addSubview(blurEffectView)
+        
         
         tableView.registerClass(UserCell.self, forCellReuseIdentifier: cellId)
         fetchUser()
@@ -163,6 +171,7 @@ class NewMessageController: UITableViewController {
         cell.group = group
         
         cell.detailTextLabel?.hidden = true
+        cell.barstoolImage.hidden = true
         cell.addButton.tag = indexPath.row
         
         cell.addButton.addTarget(self, action: #selector(handleAddOrRemove), forControlEvents: .TouchUpInside)

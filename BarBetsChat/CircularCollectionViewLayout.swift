@@ -14,7 +14,7 @@ class CircularCollectionViewLayoutAttributes: UICollectionViewLayoutAttributes {
     
     var angle: CGFloat = 0 {
         didSet {
-            zIndex = Int(angle)
+            zIndex = Int(angle*1000000)
             transform = CGAffineTransformMakeRotation(angle)
         }
     }
@@ -30,7 +30,7 @@ class CircularCollectionViewLayoutAttributes: UICollectionViewLayoutAttributes {
 
 class CircularCollectionViewLayout: UICollectionViewLayout {
     
-    let itemSize = CGSize(width: 80, height: 105)
+    let itemSize = CGSize(width: 133, height: 173)
     
     var angleAtExtreme: CGFloat {
         return collectionView!.numberOfItemsInSection(0) > 0 ? -CGFloat(collectionView!.numberOfItemsInSection(0)-1)*anglePerItem : 0
@@ -65,20 +65,20 @@ class CircularCollectionViewLayout: UICollectionViewLayout {
         super.prepareLayout()
         
         let centerX = collectionView!.contentOffset.x + (CGRectGetWidth(collectionView!.bounds)/2.0)
-        let anchorPointY = ((itemSize.height/3) + radius)/itemSize.height
-        //let anchorPointY = ((itemSize.height/2.0) + radius)/itemSize.height
-        //1
-        let theta = atan2(CGRectGetWidth(collectionView!.bounds)/2.0, radius + (itemSize.height/2.0) - (CGRectGetHeight(collectionView!.bounds)/2.0)) //1
-        //2
+        let anchorPointY = ((itemSize.height/2.0) + radius)/itemSize.height
+        
+        
+        let theta = atan2(CGRectGetWidth(collectionView!.bounds)/2.0, radius + (itemSize.height/2.0) - (CGRectGetHeight(collectionView!.bounds)/2.0))
+        
         var startIndex = 0
         var endIndex = collectionView!.numberOfItemsInSection(0) - 1
-        //3
+        
         if (angle < -theta) {
             startIndex = Int(floor((-theta - angle)/anglePerItem))
         }
-        //4
+        
         endIndex = min(endIndex, Int(ceil((theta - angle)/anglePerItem)))
-        //5
+        
         if (endIndex < startIndex) {
             endIndex = 0
             startIndex = 0
@@ -86,10 +86,7 @@ class CircularCollectionViewLayout: UICollectionViewLayout {
         attributesList = (startIndex...endIndex).map { (i) -> CircularCollectionViewLayoutAttributes in
             let attributes = CircularCollectionViewLayoutAttributes(forCellWithIndexPath: NSIndexPath(forItem: i, inSection: 0))
             attributes.size = self.itemSize
-            //attributes.center = CGPoint(x: centerX, y: CGRectGetMidY(self.collectionView!.bounds)*1.73)
-            
-            let centerY = collectionView!.contentOffset.y + (CGRectGetWidth(collectionView!.bounds)*1.5)
-            attributes.center = CGPoint(x: centerX, y: centerY)
+            attributes.center = CGPoint(x: centerX, y: CGRectGetMidY(self.collectionView!.bounds)*1.5)
             attributes.angle = self.angle + (self.anglePerItem*CGFloat(i))
             attributes.anchorPoint = CGPoint(x: 0.5, y: anchorPointY)
             return attributes
@@ -111,24 +108,23 @@ class CircularCollectionViewLayout: UICollectionViewLayout {
     }
     
     
-    
-    override func targetContentOffsetForProposedContentOffset(proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
-        
-        var finalContentOffset = proposedContentOffset
-        let factor = -angleAtExtreme/(collectionViewContentSize().width - CGRectGetWidth(collectionView!.bounds))
-        let proposedAngle = proposedContentOffset.x*factor
-        let ratio = proposedAngle/anglePerItem
-        var multiplier: CGFloat
-        if (velocity.x > 0) {
-            multiplier = ceil(ratio)
-        } else if (velocity.x < 0) {
-            multiplier = floor(ratio)
-        } else {
-            multiplier = round(ratio)
-        }
-        finalContentOffset.x = multiplier*anglePerItem/factor
-        
-        return finalContentOffset
-    }
+//    override func targetContentOffsetForProposedContentOffset(proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
+//        
+//        var finalContentOffset = proposedContentOffset
+//        let factor = -angleAtExtreme/(collectionViewContentSize().width - CGRectGetWidth(collectionView!.bounds))
+//        let proposedAngle = proposedContentOffset.x*factor
+//        let ratio = proposedAngle/anglePerItem
+//        var multiplier: CGFloat
+//        if (velocity.x > 0) {
+//            multiplier = ceil(ratio)
+//        } else if (velocity.x < 0) {
+//            multiplier = floor(ratio)
+//        } else {
+//            multiplier = round(ratio)
+//        }
+//        finalContentOffset.x = multiplier*anglePerItem/factor
+//        
+//        return finalContentOffset
+//    }
     
 }

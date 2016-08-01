@@ -35,10 +35,18 @@ class MessagesViewController: UITableViewController {
         
         checkIfUserIsLoggedIn()
         
+
         let backgroundImage = UIImage(named: "woodpattern.jpg")
         let background = UIImageView(image: backgroundImage)
-        background.contentMode = .ScaleAspectFill
+        background.contentMode = .ScaleToFill
         tableView.backgroundView = background
+        
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = background.bounds
+        blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight] // for supporting device rotation
+        background.addSubview(blurEffectView)
+    
         
         tableView.registerClass(UserCell.self, forCellReuseIdentifier: cellId)
     }
@@ -165,10 +173,9 @@ class MessagesViewController: UITableViewController {
         let group = groups[indexPath.row]
         
         cell.textLabel?.text = group.groupName
+        
         cell.detailTextLabel?.text = group.groupDescription
         cell.group = group
-        
-        
         
         cell.addButton.hidden = true
         
@@ -180,7 +187,7 @@ class MessagesViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 100
+        return 70
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -207,9 +214,14 @@ class MessagesViewController: UITableViewController {
             (snapshot) in
             
             if let dictionary = snapshot.value as? [String: AnyObject] {
-                self.navigationItem.title = (dictionary["name"] as? String)! + "'s Groups"
+                self.navigationItem.title = (dictionary["name"] as? String)!
                 if let name = self.navigationItem.title {
-                    self.setUpNavBar(name)
+                    
+                    let fullName: String = name
+                    let fullNameArr = fullName.componentsSeparatedByString(" ")
+                    var firstName: String = fullNameArr[0]
+                    firstName = firstName + "'s Groups"
+                    self.setUpNavBar(firstName)
                 }
                 
             }
@@ -232,18 +244,18 @@ class MessagesViewController: UITableViewController {
         containerView.translatesAutoresizingMaskIntoConstraints = false
         titleView.addSubview(containerView)
         
-        let image = UIImage(named: "smalllogo")
+        let image = UIImage(named: "bets")
         let barBetsImageView = UIImageView(image: image)
         barBetsImageView.translatesAutoresizingMaskIntoConstraints = false
-        barBetsImageView.contentMode = .ScaleAspectFill
+        barBetsImageView.contentMode = .ScaleAspectFit
         barBetsImageView.layer.cornerRadius = 5
         barBetsImageView.clipsToBounds = true
         containerView.addSubview(barBetsImageView)
         
         barBetsImageView.leftAnchor.constraintEqualToAnchor(containerView.leftAnchor).active = true
         barBetsImageView.centerYAnchor.constraintEqualToAnchor(containerView.centerYAnchor).active = true
-        barBetsImageView.widthAnchor.constraintEqualToConstant(30).active = true
-        barBetsImageView.heightAnchor.constraintEqualToConstant(30).active = true
+        barBetsImageView.widthAnchor.constraintEqualToConstant(50).active = true
+        barBetsImageView.heightAnchor.constraintEqualToConstant(50).active = true
         
         let nameLabel = UILabel()
         containerView.addSubview(nameLabel)

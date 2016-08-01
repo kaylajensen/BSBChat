@@ -24,7 +24,8 @@ class CircularCollectionViewCell: UICollectionViewCell {
             
             memberLabel?.text = firstName
             
-            memberLabel?.font = UIFont.boldSystemFontOfSize(14)
+            //memberLabel?.font = UIFont.boldSystemFontOfSize(14)
+            //memberLabel?.font = UIFont(name: "texas", size: 15)
             memberLabel?.textColor = UIColor.whiteColor()
         }
     }

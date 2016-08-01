@@ -18,6 +18,7 @@ class UserCell: UITableViewCell {
             textLabel?.textColor = UIColor.whiteColor()
             textLabel?.font = UIFont.boldSystemFontOfSize(19)
             detailTextLabel?.font = UIFont.systemFontOfSize(15)
+            
         }
     }
     
@@ -36,7 +37,9 @@ class UserCell: UITableViewCell {
         let button = UIButton(type: .System)
         button.backgroundColor = UIColor.blackColor()
         button.setTitle("+", forState: .Normal)
-        button.backgroundColor = UIColor.darkGrayColor()
+        button.backgroundColor = UIColor.clearColor()
+        button.layer.borderWidth = 1.0
+        button.layer.borderColor = UIColor.whiteColor().CGColor
         button.translatesAutoresizingMaskIntoConstraints = false
         button.titleLabel?.font = UIFont.systemFontOfSize(20)
         button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
@@ -50,10 +53,8 @@ class UserCell: UITableViewCell {
         
         if addButton.titleLabel?.text == "+" {
             addButton.setTitle("-", forState: .Normal)
-            addButton.backgroundColor = UIColor.redColor()
         } else {
             addButton.setTitle("+", forState: .Normal)
-            addButton.backgroundColor = UIColor.darkGrayColor()
         }
         
     }
@@ -71,7 +72,7 @@ class UserCell: UITableViewCell {
 
         
         addButton.rightAnchor.constraintEqualToAnchor(self.rightAnchor, constant: -15).active = true
-        addButton.topAnchor.constraintEqualToAnchor(self.topAnchor, constant: 22).active = true
+        addButton.topAnchor.constraintEqualToAnchor(self.topAnchor, constant: 13).active = true
         addButton.widthAnchor.constraintEqualToConstant(30).active = true
         addButton.heightAnchor.constraintEqualToConstant(30).active = true
         
