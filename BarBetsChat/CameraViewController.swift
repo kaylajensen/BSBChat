@@ -49,6 +49,7 @@ class CameraViewController: UIViewController {
     var captureSession: AVCaptureSession?
     var stillImageOutput: AVCaptureStillImageOutput?
     var previewLayer: AVCaptureVideoPreviewLayer?
+    var videoOutput: AVCaptureVideoDataOutput?
     
     
     override func viewDidLoad() {
@@ -154,6 +155,21 @@ class CameraViewController: UIViewController {
             
             stillImageOutput = AVCaptureStillImageOutput()
             stillImageOutput?.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
+            
+            videoOutput = AVCaptureVideoDataOutput()
+            if((captureSession?.canAddOutput(videoOutput)) != nil) {
+                captureSession?.addOutput(videoOutput)
+                
+                previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+                let bounds = view.layer.bounds as CGRect
+                previewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
+                previewLayer?.bounds = bounds
+                previewLayer?.position = CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds))
+                
+                previewCamera.layer.addSublayer(previewLayer!)
+                captureSession?.startRunning()
+                
+            }
             if ((captureSession?.canAddOutput(stillImageOutput)) != nil) {
                 captureSession?.addOutput(stillImageOutput)
                 
@@ -186,7 +202,7 @@ class CameraViewController: UIViewController {
         
         
         capturedImageView.widthAnchor.constraintEqualToAnchor(view.widthAnchor).active = true
-        capturedImageView.topAnchor.constraintEqualToAnchor(previewCamera.bottomAnchor).active = true
+        capturedImageView.topAnchor.constraintEqualToAnchor(view.bottomAnchor).active = true
         capturedImageView.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor).active = true
         
         takePhotoButton.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
@@ -196,7 +212,7 @@ class CameraViewController: UIViewController {
         
         previewCamera.topAnchor.constraintEqualToAnchor(view.topAnchor).active = true
         previewCamera.widthAnchor.constraintEqualToAnchor(view.widthAnchor).active = true
-        previewCamera.bottomAnchor.constraintEqualToAnchor(capturedImageView.topAnchor).active = true
+        previewCamera.bottomAnchor.constraintEqualToAnchor(view.topAnchor).active = true
         previewCamera.heightAnchor.constraintEqualToConstant(333.5).active = true
         
         
@@ -221,6 +237,8 @@ class CameraViewController: UIViewController {
                 }
             })
         }
+        
+
         
     }
     

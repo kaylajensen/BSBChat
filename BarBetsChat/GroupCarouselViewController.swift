@@ -25,8 +25,6 @@ class GroupCarouselViewController: UIViewController, iCarouselDelegate, iCarouse
         return c
     }()
     
-    var names = ["Kayla","Corbin","Winston","Phil","Ally","Mattie","Eric","Allison","Michael","Kenzie"]
-    
     lazy var myButton : UIButton = {
         let button = UIButton()
         button.setTitle("Bet Machine", forState: .Normal)
